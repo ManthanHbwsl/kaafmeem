@@ -1,0 +1,18 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sales_order" resource="sales" comment="Sales Flat Quote Address">
+        <column xsi:type="decimal" name="base_cod_amount" scale="2" precision="12" unsigned="false" nullable="true" comment="Base Cash on Delivery"/>
+        <column xsi:type="decimal" name="cod_amount" scale="2" precision="12" unsigned="false" nullable="true" comment="Cash on Delivery"/>
+        <column xsi:type="decimal" name="total_cod_amount" scale="2" precision="12" unsigned="false" nullable="true" comment="Cash on Delivery Inclusive Tax"/>
+    </table>
+    <table name="sales_invoice" resource="sales" comment="Sales Flat Quote Address">
+        <column xsi:type="decimal" name="base_cod_amount" scale="2" precision="12" unsigned="false" nullable="true" comment="Base Cash on Delivery"/>
+        <column xsi:type="decimal" name="cod_amount" scale="2" precision="12" unsigned="false" nullable="true" comment="Cash on Delivery"/>
+        <column xsi:type="decimal" name="total_cod_amount" scale="2" precision="12" unsigned="false" nullable="true" comment="Cash on Delivery Inclusive Tax"/>
+    </table>
+    <table name="sales_creditmemo" resource="sales" comment="Sales Flat Quote Address">
+        <column xsi:type="decimal" name="base_cod_amount" scale="2" precision="12" unsigned="false" nullable="true" comment="Base Cash on Delivery"/>
+        <column xsi:type="decimal" name="cod_amount" scale="2" precision="12" unsigned="false" nullable="true" comment="Cash on Delivery"/>
+        <column xsi:type="decimal" name="total_cod_amount" scale="2" precision="12" unsigned="false" nullable="true" comment="Cash on Delivery Inclusive Tax"/>
+    </table>
+</schema>

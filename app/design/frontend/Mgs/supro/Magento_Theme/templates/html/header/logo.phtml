@@ -1,0 +1,62 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+$storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();
+/**
+ * @var \Magento\Theme\ViewModel\Block\Html\Header\LogoSizeResolverInterface|null $logoSizeResolver
+ */
+$logoSizeResolver = $block->getLogoSizeResolver();
+$logoWidth = $logoSizeResolver !== null && $logoSizeResolver->getWidth()
+    ? $logoSizeResolver->getWidth()
+    : $block->getLogoWidth();
+$logoHeight = $logoSizeResolver !== null && $logoSizeResolver->getHeight()
+    ? $logoSizeResolver->getHeight()
+    : $block->getLogoHeight();
+?>
+<?php
+$themeSettingConfig = $this->helper('MGS\ThemeSettings\Helper\Config');
+$class = "";
+$logoMobile = $themeSettingConfig->getStoreConfig('themesettings/header/mobile_logo');
+if($logoMobile){
+	$class .= " exits-lg-mb";
+}
+$stickyMobile = $themeSettingConfig->getStoreConfig('themesettings/header/sticky_logo');
+if($stickyMobile){
+	$class .= " exits-lg-stk";
+}
+?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<?php if ($block->isHomePage()):?>
+    <strong class="logo<?= $class ?>">
+<?php else: ?>
+    <a class="logo<?= $class ?>"
+    href="<?= $block->escapeUrl($block->getUrl('')); ?>"
+    title="<?= $block->escapeHtml($storeName) ?>"
+    aria-label="store logo">
+<?php endif ?>
+        <img class="default-logo" src="<?php /* @escapeNotVerified */ echo $block->getLogoSrc() ?>"
+             alt="<?php /* @escapeNotVerified */ echo $block->getLogoAlt() ?>"
+             <?= $logoWidth ? 'width="' . $block->escapeHtmlAttr($logoWidth) . '"' : '' ?>
+             <?= $logoHeight ? 'height="' . $block->escapeHtmlAttr($logoHeight) . '"' : '' ?>
+        />
+		<?php if($logoMobile): ?>
+			<img class="mobile-logo" src="<?php /* @escapeNotVerified */ echo $themeSettingConfig->getMediaUrl('mgs/setting/' . $logoMobile) ?>"
+             alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"/>
+		<?php endif ?>
+		<?php if($stickyMobile): ?>
+			<img class="sticky-logo" src="<?php /* @escapeNotVerified */ echo $themeSettingConfig->getMediaUrl('mgs/setting/' . $stickyMobile) ?>"
+             alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"/>
+		<?php endif ?>
+<?php if ($block->isHomePage()):?>
+    </strong>
+<?php else:?>
+    </a>
+<?php endif?>

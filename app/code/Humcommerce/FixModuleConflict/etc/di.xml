@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+        <type name="Ebizmarts\MailChimp\Helper\Sync">
+                <plugin sortOrder="10" name="Humcommerce_FixModuleConflict::mailChimpPlugin"
+                    type="Humcommerce\FixModuleConflict\Plugin\Sync\AddData"/>
+        </type>
+
+        <type name="Magento\Sales\Model\ResourceModel\Order">
+                <plugin name="Amasty_Rewards::OnOrderComplete" type="Amasty\Rewards\Plugin\Sales\Model\ResourceModel\Order" disabled="true"/>
+        </type>
+        
+        <type name="Magento\Sales\Model\ResourceModel\Order">
+                <plugin name="Humcommerce_FixModuleConflict::OnOrderComplete" sortOrder="0" type="Humcommerce\FixModuleConflict\Plugin\Amasty\RewardFix" />
+        </type>
+        <type name="Magento\Quote\Model\ShippingAddressManagement">
+                <plugin disabled="true" name="What3Words_Model_ShippingAddressManagement" sortOrder="10" type="What3Words\What3Words\Plugin\Checkout\ShippingAddressManagementPlugin"/>
+                <plugin disabled="false" name="Humcommerce_FixModuleConflict::What3Words_Model_ShippingAddressManagement" sortOrder="10" type="Humcommerce\FixModuleConflict\Plugin\Checkout\ShippingAddressManagementPlugin"/>
+        </type>
+</config>

@@ -1,0 +1,14 @@
+& when (@media-common = true) {
+    .mstBanner-placeholder__sliderRenderer {
+        .swiper-button-next, .swiper-button-prev {
+            &:after {
+                color:       #ffffff;
+                text-shadow: 0 0 6px #333;
+            }
+
+            &:hover:after {
+                color: var(--swiper-navigation-color,var(--swiper-theme-color));
+            }
+        }
+    }
+}

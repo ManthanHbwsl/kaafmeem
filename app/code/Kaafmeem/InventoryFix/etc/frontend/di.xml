@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\ResourceModel\Product\Collection">
+        <plugin name="Kaafmeem_InventoryFix::add_stock_information" type="Kaafmeem\InventoryFix\Plugin\ConfigurableProduct\AddStockStatus" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\View">
+        <plugin name="Kaafmeem_InventoryFix::addStockStatus"
+                type="Kaafmeem\InventoryFix\Plugin\Catalog\Block\Product\View\AddStockStatus"/>
+    </type>
+</config>

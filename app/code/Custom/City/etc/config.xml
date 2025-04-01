@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <city>
+            <general>
+                <enabled>1</enabled>
+                <citynotinlist>0</citynotinlist>
+                <shipping_rate>0</shipping_rate>
+                <citynotinlist_title>City not in list</citynotinlist_title>
+                <zipnotinlist>0</zipnotinlist>
+                <zipnotinlist_title>Zip not in list</zipnotinlist_title>
+                <is_state_available>1</is_state_available>
+                <city_title>Please select city</city_title>
+                <zip_title>Please select zip code</zip_title>
+            </general>
+        </city>
+    </default>
+</config>

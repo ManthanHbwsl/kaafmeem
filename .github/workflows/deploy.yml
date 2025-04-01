@@ -1,0 +1,27 @@
+name: kaafmeem_dev
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - develop
+    types:
+      - closed
+
+jobs:
+  deployment-job:
+      name: Stage Deploy
+      if: github.event.pull_request.merged == true
+      runs-on: ubuntu-latest
+      steps:
+        - name: SSH into the machine and run some commands
+          uses: appleboy/ssh-action@master
+          with:
+            host: 52.1.85.154
+            username: devkaafmeem
+            key:  ${{ secrets.SH_SSH }}
+            port: 22
+            script: |
+              cd /home/devkaafmeem/webapps/devkaafmeem/capistrano
+              echo "Running deployment script on the server"
+              cap develop deploy

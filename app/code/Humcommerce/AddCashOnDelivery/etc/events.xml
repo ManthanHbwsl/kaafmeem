@@ -1,0 +1,11 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_model_service_quote_submit_success">
+        <observer name="update_cod_columns_order" instance="Humcommerce\AddCashOnDelivery\Observer\Sales\UpdateCodFeild" />
+    </event>
+    <event name="sales_order_invoice_register">
+        <observer name="update_cod_columns_invoice" instance="Humcommerce\AddCashOnDelivery\Observer\Invoice\UpdateCodFeild" />
+    </event>
+    <event name="sales_order_creditmemo_register">
+        <observer name="update_cod_columns_creditmemo" instance="Humcommerce\AddCashOnDelivery\Observer\Creditmemo\UpdateCodFeild" />
+    </event>
+</config>

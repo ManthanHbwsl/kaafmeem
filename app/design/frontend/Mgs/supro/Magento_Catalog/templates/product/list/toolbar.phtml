@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */?>
+<?php if ($block->getCollection()->getSize()): ?>
+    <div class="toolbar toolbar-products" data-mage-init='<?php /* @escapeNotVerified */ echo $block->getWidgetOptionsJson(); ?>'>
+        <?php if ($block->getIsBottom()): ?>
+            <?= $block->getPagerHtml() ?>
+            <?= $block->fetchView($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
+        <?php else: ?>
+            <?= $block->fetchView($block->getTemplateFile('Magento_Catalog::product/list/toolbar/amount.phtml')) ?>
+
+            <div class="filter-placeholder"><a class="action-filter" href="javascript:void(0)"><?= __('Filter'); ?></a></div>
+
+            <?php if ($block->isExpanded()): ?>
+                <?= $block->fetchView($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+            <?php endif; ?>
+            <?php if ($block->isExpanded()): ?>
+                <?= $block->fetchView($block->getTemplateFile('Magento_Catalog::product/list/toolbar/viewmode.phtml')) ?>
+            <?php endif; ?>
+        <?php endif ?>
+    </div>
+<?php endif ?>

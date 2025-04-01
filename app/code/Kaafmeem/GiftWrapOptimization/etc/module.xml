@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Kaafmeem_GiftWrapOptimization">
+        <sequence>
+            <module name="Amasty_ImageOptimizer"/>
+            <module name="Amasty_PageSpeedTools"/>
+            <module name="Mageplaza_GiftWrap"/>
+        </sequence>
+    </module>
+</config>

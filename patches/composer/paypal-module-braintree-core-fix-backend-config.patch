@@ -1,0 +1,20 @@
+--- a/vendor/paypal/module-braintree-core/view/adminhtml/web/js/system.js
++++ b/vendor/paypal/module-braintree-core/view/adminhtml/web/js/system.js
+@@ -200,7 +200,7 @@
+     $('[data-ui-id="select-groups-braintree-section-groups-braintree-groups-braintree-paypal-groups-styling-fields-payment-location-value"]').change(function () {
+         hidePaypalSections();
+     });
+-    locations.each(function (loc) {
++    $.each(locations, function (loc) {
+         $('[data-ui-id="select-groups-braintree-section-groups-braintree-groups-braintree-paypal-groups-styling-groups-button-'+loc+'-fields-paypal-location-'+loc+'-button-type-value"]').change(function () {
+             hidePaypalSections();
+         });
+@@ -215,7 +215,7 @@
+         }
+         merchantCountryIndex = mainLocation.attr('id').split('_')[1];
+         mainType = $('[data-ui-id="select-groups-braintree-section-groups-braintree-groups-braintree-paypal-groups-styling-groups-button-'+mainLocation.val()+'-fields-paypal-location-'+mainLocation.val()+'-button-type-value"]');
+-        locations.each(function (loc) {
++        $.each(locations, function (loc) {
+             $('#row_payment_' + merchantCountryIndex + '_braintree_section_braintree_braintree_paypal_styling_button_' + loc).hide();
+             buttonTypes.each(function (type) {
+                 $('#row_payment_'+merchantCountryIndex+'_braintree_section_braintree_braintree_paypal_styling_button_'+loc+'_button_location_'+loc+'_type_' + type).hide();

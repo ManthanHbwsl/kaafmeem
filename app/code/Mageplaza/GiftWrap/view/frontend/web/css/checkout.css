@@ -1,0 +1,52 @@
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+.product-item p.mpgiftwrap-item-detail, .mpgiftwrap-toggle-block {
+    padding-left: 88px;
+}
+
+@media all and (max-width: 768px), print {
+    .product-item .a-left.product .mpgiftwrap-item-detail, .product-item .a-left.product .mpgiftwrap-toggle-block {
+        padding-left: 13px;
+    }
+}
+
+.mpgiftwrap-toggle-block {
+    display: block;
+}
+
+#title-checkout-all-cart {
+    margin-bottom: 20px;
+}
+
+.checkout-index-index #title-checkout-all-cart.step-title .fa {
+    display: none;
+    margin-right: 12px;
+}
+
+.onestepcheckout-index-index #title-checkout-all-cart.step-title .fa {
+    display: inline-block;
+}
+
+body.checkout-index-index .modal-popup .modal-inner-wrap {
+    margin-left: auto;
+    width: 75%;
+    left: 0;
+}

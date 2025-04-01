@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mageplaza\GiftWrap\Api\QuoteWrapInterface" type="Mageplaza\GiftWrap\Model\Api\QuoteWrap"/>
+    <preference for="Mageplaza\GiftWrap\Api\GuestQuoteWrapInterface" type="Mageplaza\GiftWrap\Model\Api\GuestQuoteWrap"/>
+    <preference for="Mageplaza\GiftWrap\Api\Data\WrapDetailsInterface" type="Mageplaza\GiftWrap\Model\Wrap"/>
+    <preference for="Mageplaza\GiftWrap\Api\Data\WrapItemInterface" type="Mageplaza\GiftWrap\Model\Api\Data\WrapItem"/>
+
+    <preference for="Mageplaza\GiftWrap\Api\Data\CategoryInterface" type="Mageplaza\GiftWrap\Model\Category"/>
+    <preference for="Mageplaza\GiftWrap\Api\Data\CategorySearchResultInterface" type="Mageplaza\GiftWrap\Model\ResourceModel\Category\Collection"/>
+
+    <preference for="Mageplaza\GiftWrap\Api\Data\WrapInterface" type="Mageplaza\GiftWrap\Model\Wrap"/>
+    <preference for="Mageplaza\GiftWrap\Api\Data\WrapSearchResultInterface" type="Mageplaza\GiftWrap\Model\ResourceModel\Wrap\Collection"/>
+
+    <preference for="Mageplaza\GiftWrap\Api\Data\HistoryInterface" type="Mageplaza\GiftWrap\Model\History"/>
+    <preference for="Mageplaza\GiftWrap\Api\Data\HistorySearchResultInterface" type="Mageplaza\GiftWrap\Model\ResourceModel\History\Collection"/>
+
+    <preference for="Mageplaza\GiftWrap\Api\CategoryManagementInterface" type="Mageplaza\GiftWrap\Model\Api\CategoryManagement"/>
+    <preference for="Mageplaza\GiftWrap\Api\WrapManagementInterface" type="Mageplaza\GiftWrap\Model\Api\WrapManagement"/>
+    <preference for="Mageplaza\GiftWrap\Api\HistoryManagementInterface" type="Mageplaza\GiftWrap\Model\Api\HistoryManagement"/>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mpgiftwrap_category_grid_data_source" xsi:type="string">Mageplaza\GiftWrap\Model\ResourceModel\Category\Grid\Collection</item>
+            </argument>
+        </arguments>
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mpgiftwrap_wrap_grid_data_source" xsi:type="string">Mageplaza\GiftWrap\Model\ResourceModel\Wrap\Grid\Collection</item>
+            </argument>
+        </arguments>
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mpgiftwrap_history_grid_data_source" xsi:type="string">Mageplaza\GiftWrap\Model\ResourceModel\History\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mageplaza\GiftWrap\Model\ResourceModel\Category\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageplaza_giftwrap_category</argument>
+            <argument name="resourceModel" xsi:type="string">Mageplaza\GiftWrap\Model\ResourceModel\Category</argument>
+        </arguments>
+    </type>
+    <type name="Mageplaza\GiftWrap\Model\ResourceModel\Wrap\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageplaza_giftwrap_wrap</argument>
+            <argument name="resourceModel" xsi:type="string">Mageplaza\GiftWrap\Model\ResourceModel\Wrap</argument>
+        </arguments>
+    </type>
+    <type name="Mageplaza\GiftWrap\Model\ResourceModel\History\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageplaza_giftwrap_history</argument>
+            <argument name="resourceModel" xsi:type="string">Mageplaza\GiftWrap\Model\ResourceModel\History</argument>
+        </arguments>
+    </type>
+    <type name="Mageplaza\GiftWrap\Block\Checkout\LayoutProcessor">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Mageplaza\GiftWrap\Plugin\Controller\Checkout\Cart">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Mageplaza\GiftWrap\Block\Checkout\AllCart">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Quote\Api\CartTotalRepositoryInterface">
+        <plugin name="mpgiftwrap_add_gift_wrap_item" type="Mageplaza\GiftWrap\Plugin\Model\Quote\CartTotalRepository"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Pdf\Items\AbstractItems">
+        <plugin name="mpgiftwrap_add_item_detail" type="Mageplaza\GiftWrap\Plugin\Block\Sales\Item\Pdf\AbstractItems"/>
+    </type>
+    <type name="Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer">
+        <plugin name="mpgiftwrap_add_item_detail" type="Mageplaza\GiftWrap\Plugin\Block\Sales\Item\Renderer\DefaultRenderer"/>
+    </type>
+    <type name="Magento\Sales\Block\Adminhtml\Items\Column\DefaultColumn">
+        <plugin name="mpgiftwrap_add_item_detail" type="Mageplaza\GiftWrap\Plugin\Block\Sales\Item\Column\DefaultColumn"/>
+    </type>
+    <type name="Magento\Bundle\Block\Adminhtml\Sales\Order\View\Items\Renderer">
+        <plugin name="mpgiftwrap_add_item_detail" type="Mageplaza\GiftWrap\Plugin\Block\Sales\Item\View\Renderer"/>
+    </type>
+    <type name="Magento\Sales\Block\Order\Email\Items\DefaultItems">
+        <plugin name="mpgiftwrap_add_item_detail" type="Mageplaza\GiftWrap\Plugin\Block\Sales\Item\Email\DefaultItems"/>
+    </type>
+    <type name="Magento\Sales\Block\Order\Email\Items\Order\DefaultOrder">
+        <plugin name="mpgiftwrap_add_item_detail" type="Mageplaza\GiftWrap\Plugin\Block\Sales\Item\Email\DefaultOrder"/>
+    </type>
+    <type name="Mageplaza\PdfInvoice\Block\PdfItems">
+        <plugin name="mpgiftwrap_add_item_detail" type="Mageplaza\GiftWrap\Plugin\Block\PdfInvoice\PdfItems"/>
+    </type>
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="mpgiftwrap_api_order" type="Mageplaza\GiftWrap\Plugin\Api\OrderGet"/>
+    </type>
+    <type name="Magento\Sales\Api\InvoiceRepositoryInterface">
+        <plugin name="mpgiftwrap_api_invoice" type="Mageplaza\GiftWrap\Plugin\Api\InvoiceGet"/>
+    </type>
+    <type name="Magento\Sales\Api\CreditmemoRepositoryInterface">
+        <plugin name="mpgiftwrap_api_creditmemo" type="Mageplaza\GiftWrap\Plugin\Api\CreditmemoGet"/>
+    </type>
+    <type name="Magento\Sales\Api\OrderItemRepositoryInterface">
+        <plugin name="mpgiftwrap_api_order_item" type="Mageplaza\GiftWrap\Plugin\Api\OrderItemGet"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote">
+        <plugin name="mpgiftwrap_add_gift_wrap_data_to_product" type="Mageplaza\GiftWrap\Plugin\Model\Quote"/>
+    </type>
+    <type name="Mageplaza\Osc\Model\CheckoutManagement">
+        <plugin name="mpgiftwrap_limit_qty" type="Mageplaza\GiftWrap\Plugin\Model\Osc\CheckoutManagement"/>
+    </type>
+</config>

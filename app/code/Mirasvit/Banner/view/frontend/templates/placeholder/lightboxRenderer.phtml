@@ -1,0 +1,31 @@
+<?php
+declare(strict_types=1);
+/** @var \Mirasvit\Banner\Block\Placeholder\LightboxRenderer $block */
+$placeholder = $block->getPlaceholder();
+$widgetData  = $block->getPopupConfig();
+$banners     = $block->getBanners();
+
+if (!$banners || !count($banners)) {
+    return;
+}
+?>
+<div data-banner-renderer="<?= $placeholder->getId() ?>" class="mstBanner-placeholder__lightboxRenderer">
+    <div class="lightbox-content">
+        <div class="mstBanner__close" data-element="close"><?= $block->getCloseButton() ?: '&times;' ?></div>
+        <?php foreach ($banners as $banner): ?><?= $block->getBannerHtml($banner) ?><?php endforeach ?>
+    </div>
+</div>
+
+<script type="text/x-magento-init"><?= $block->jsonEncode([
+        '[data-banner-renderer="' . $placeholder->getId() . '"]' => [
+            'Mirasvit_Banner/js/placeholder/popup-renderer' => $widgetData,
+        ],
+    ]) ?></script>
+
+<?php if ($color = $block->getMaskColor()): ?>
+<style>
+    [data-banner-renderer="<?= $placeholder->getId() ?>"] {
+        background-color: <?= $color ?>;
+    }
+</style>
+<?php endif; ?>

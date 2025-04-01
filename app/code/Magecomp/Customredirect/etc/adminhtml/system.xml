@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/system_file.xsd">
+    <system>
+        <tab id="magecomp" translate="label" sortOrder="100" class="magecomp-logo">
+            <label><![CDATA[]]></label>
+        </tab>
+        <section id="customredirec" translate="label" sortOrder="100" type="text" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Custom Redirect</label>
+            <tab>magecomp</tab>
+            <resource>Magecomp_Customredirect::customredirectconfig</resource>
+            <group id="general" translate="label" sortOrder="10" type="text" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Configuration</label>
+                <field id="enabled" translate="label" sortOrder="11" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Custom Redirect</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="loginsec" translate="label" sortOrder="20" type="text" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Login Redirect Settings</label>
+                <field id="enabled" translate="label" sortOrder="21" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Login Redirection</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="logingroup" translate="label" sortOrder="22" type="multiselect" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Login Redirection For Specific Customer Groups</label>
+                    <source_model>Magecomp\Customredirect\Model\System\Groupscust</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="loginrtype" translate="label" sortOrder="23" type="select" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Login Redirection On</label>
+                    <source_model>Magecomp\Customredirect\Model\Source\Redirecttype</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="logincmspage" translate="label comment" type="select" sortOrder="24" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>CMS Page</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <depends>
+                        <field id="loginrtype">0</field>
+                    </depends>
+                </field>
+                <field id="loginpath" translate="label comment" sortOrder="25" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Path</label>
+                    <comment>Enter Custom URL Path without domain.</comment>
+                    <depends>
+                        <field id="loginrtype">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="logoutsec" translate="label" sortOrder="30" type="text" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Logout Redirect Settings</label>
+                <field id="enabled" translate="label" sortOrder="31" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Logout Redirection</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="logoutgroup" translate="label" sortOrder="32" type="multiselect" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Logout Redirection For Specific Customer Groups</label>
+                    <source_model>Magecomp\Customredirect\Model\System\Groupscust</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="logoutrtype" translate="label" sortOrder="33" type="select" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Logout Redirection On</label>
+                    <source_model>Magecomp\Customredirect\Model\Source\Redirecttype</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="logoutcmspage" translate="label comment" type="select" sortOrder="34" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>CMS Page</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <depends>
+                        <field id="logoutrtype">0</field>
+                    </depends>
+                </field>
+                <field id="logoutpath" translate="label comment" sortOrder="35" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Path</label>
+                    <comment>Enter Custom URL Path without domain.</comment>
+                    <depends>
+                        <field id="logoutrtype">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="regsec" translate="label" sortOrder="40" type="text" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Website Registration Redirect Settings</label>
+                <field id="enabled" translate="label" sortOrder="41" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Registration Redirection</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="reggroup" translate="label" sortOrder="42" type="multiselect" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Registration Redirection For Specific Customer Groups</label>
+                    <source_model>Magecomp\Customredirect\Model\System\Groupscust</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="regrtype" translate="label" sortOrder="43" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Registration Redirection On</label>
+                    <source_model>Magecomp\Customredirect\Model\Source\Redirecttype</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="regcmspage" translate="label comment" type="select" sortOrder="44" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>CMS Page</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <depends>
+                        <field id="regrtype">0</field>
+                    </depends>
+                </field>
+                <field id="regpath" translate="label comment" sortOrder="45" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Path</label>
+                    <comment>Enter Custom URL Path without domain.</comment>
+                    <depends>
+                        <field id="regrtype">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="cartsec" translate="label" sortOrder="50" type="text" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Add to Cart Redirect Settings</label>
+                <field id="enabled" translate="label" sortOrder="51" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Add to Cart Redirection</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="cartgroup" translate="label" sortOrder="52" type="multiselect" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Add to Cart Redirection For Specific Customer Groups</label>
+                    <source_model>Magecomp\Customredirect\Model\System\Groups</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="cartrtype" translate="label" sortOrder="53" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Add to Cart Redirection On</label>
+                    <source_model>Magecomp\Customredirect\Model\Source\Redirecttype</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="cartcmspage" translate="label comment" type="select" sortOrder="54" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>CMS Page</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <depends>
+                        <field id="cartrtype">0</field>
+                    </depends>
+                </field>
+                <field id="cartpath" translate="label comment" sortOrder="55" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Path</label>
+                    <comment>Enter Custom URL Path without domain.</comment>
+                    <depends>
+                        <field id="cartrtype">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

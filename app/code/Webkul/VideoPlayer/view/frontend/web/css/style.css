@@ -1,0 +1,24 @@
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_VideoPlayer
+ * @author    Webkul
+ * @copyright Copyright (c)   Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+.fotorama-video-container.remove-after:after {
+    z-index: -1 !important;
+}
+.fotorama-video-container .product-video {
+    /* height: 50%; */
+    height: max-content;
+    width: calc(100% - 160px);
+}
+.plyr--video .plyr__controls {
+    z-index: 9999999;
+}
+.fotorama__fullscreen .product-video {
+    width: 70%;
+    height: auto;
+}

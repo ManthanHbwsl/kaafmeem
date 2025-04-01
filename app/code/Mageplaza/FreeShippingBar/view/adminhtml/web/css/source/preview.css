@@ -1,0 +1,65 @@
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_FreeShippingBar
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+@import url('//fonts.googleapis.com/css?family=Open+Sans');
+@import url('//fonts.googleapis.com/css?family=Roboto');
+@import url('//fonts.googleapis.com/css?family=Lato');
+@import url('//fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('//fonts.googleapis.com/css?family=Oswald');
+@import url('//fonts.googleapis.com/css?family=Slabo+27px');
+@import url('//fonts.googleapis.com/css?family=Merriweather');
+@import url('//fonts.googleapis.com/css?family=Raleway');
+@import url('//fonts.googleapis.com/css?family=Ubuntu');
+@import url('//fonts.googleapis.com/css?family=Poppins');
+@import url('//fonts.googleapis.com/css?family=Lora');
+@import url('//fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('//fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('//fonts.googleapis.com/css?family=Playfair+Display');
+@import url('//fonts.googleapis.com/css?family=Montserrat');
+@import url('//fonts.googleapis.com/css?family=PT+Sans');
+@import url('//fonts.googleapis.com/css?family=Titillium+Web');
+@import url('//fonts.googleapis.com/css?family=Muli');
+@import url('//fonts.googleapis.com/css?family=Fira+Sans');
+@import url('//fonts.googleapis.com/css?family=PT+Sans+Narrow');
+@import url('//fonts.googleapis.com/css?family=Nunito');
+@import url('//fonts.googleapis.com/css?family=Noto+Serif');
+@import url('//fonts.googleapis.com/css?family=Inconsolata');
+@import url('//fonts.googleapis.com/css?family=Nanum+Gothic');
+@import url('//fonts.googleapis.com/css?family=Crimson+Text');
+
+/*style module free shipping bar*/
+
+.freeshippingbar {
+    line-height: 40px;
+    text-align: center;
+}
+
+.freeshippingbar a {
+    text-decoration: none;
+}
+
+#goal, #below_goal {
+    font-weight: bold;
+}
+
+#shippingbar_el_message {
+    display: none;
+    color: #e22626;
+}

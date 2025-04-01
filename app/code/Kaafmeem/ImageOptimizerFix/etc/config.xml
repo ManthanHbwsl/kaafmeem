@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amimageoptimizer>
+            <resize_images>
+                <disable_resizing_for_pages>0</disable_resizing_for_pages>
+                <jpeg_quality>90</jpeg_quality>
+            </resize_images>
+            <convert_images>
+                <webp_quality>90</webp_quality>
+            </convert_images>
+        </amimageoptimizer>
+    </default>
+</config>

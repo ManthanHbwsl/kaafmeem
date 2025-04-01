@@ -1,0 +1,23 @@
+{
+    "name": "amasty/module-optimizer-pro",
+    "description": "Page Speed Optimizer Pro by Amasty",
+    "require": {
+        "php": ">=7.3",
+        "amasty/module-page-speed-optimizer": "*",
+        "amasty/amp": "*",
+        "amasty/base": ">=1.13.6"
+    },
+    "type": "magento2-module",
+    "version": "2.3.2",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\PageSpeedOptimizerPro\\": ""
+        }
+    }
+}

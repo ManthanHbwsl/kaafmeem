@@ -1,0 +1,23 @@
+--- a/vendor/aheadworks/module-sbp/Model/Product/Resolver.php	2022-10-05 09:06:30.000000000 +0300
++++ b/vendor/aheadworks/module-sbp/Model/Product/Resolver.php	2023-03-15 17:57:59.286999612 +0300
+@@ -6,6 +6,7 @@
+ use Magento\Catalog\Api\Data\ProductInterface;
+ use Magento\Catalog\Api\ProductRepositoryInterface;
+ use Magento\Framework\App\RequestInterface;
++use Magento\Framework\Exception\NoSuchEntityException;
+ use Magento\Framework\Registry;
+
+ /**
+@@ -51,7 +52,11 @@
+     public function getProduct(): ProductInterface
+     {
+         if ($this->request->getParam('id')) {
+-            $product = $this->productRepository->getById($this->request->getParam('id'));
++            try {
++                $product = $this->productRepository->getById($this->request->getParam('id'));
++            } catch (NoSuchEntityException $e) {
++                $product = null;
++            }
+         }
+
+         return !$product ? $this->registry->registry('current_product') : $product;

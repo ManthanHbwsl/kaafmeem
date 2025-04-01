@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category   Webiators
+ * @package    Webiators_AutoInvoiceAndShipment
+ * @author     Webiators Team
+ * @copyright  Copyright (c) Webiators Technologies. ( https://webiators.com ).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+   <event name="checkout_submit_all_after">
+       <observer name="webiators_autoinvoiceandshipment_observer_createautoinvoice" instance="Webiators\AutoInvoiceAndShipment\Observer\CreateAutoInvoice" />
+   </event>
+   <event name="multishipping_checkout_controller_success_action">
+   	<observer name="webiators_autoinvoiceandshipment_observer_createautoinvoice" instance="Webiators\AutoInvoiceAndShipment\Observer\MultiCreateAutoInvoice" />
+   </event> 
+</config>

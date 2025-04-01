@@ -1,0 +1,30 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_VideoPlayer
+ * @author    Webkul
+ * @copyright Copyright (c)   Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\ProductVideo\Block\Product\View\Gallery
+ */
+$viewModel = $block->getViewModel();
+?>
+<script type="text/x-magento-init">
+    {
+        "[data-gallery-role=gallery-placeholder]": {
+            "Webkul_VideoPlayer/js/fotorama-add-video-events-mixin": {
+                "videoData": <?= /* @noEscape */ $block->getMediaGalleryDataJson() ?>,
+                "videoSettings": <?= /* @noEscape */ $block->getVideoSettingsJson() ?>,
+                "optionsVideoData": <?= /* @noEscape */ $block->getOptionsMediaGalleryDataJson() ?>,
+                "videoPlayerConfiguration": <?= /* @noEscape */ $viewModel->getVideoConfigurationJsonData() ?>
+            }
+        }
+    }
+</script>

@@ -1,0 +1,237 @@
+<?php
+
+$postParms = $this->getRequest()->getPostValue();
+$search_orderid = $this->getRequest()->getParam("view");
+
+if(!empty($search_orderid)) {
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$orderData = $objectManager->create('\Magento\Sales\Model\Order')->loadByIncrementId($search_orderid);
+	
+	
+	if( $orderData->getId() ){
+		$order_id = $orderData->getId();
+		$helper = $this->helper('Webindiainc\Qrcodescan\Helper\Data');
+		$codLabel = $helper->getStoreConfig('payment/cashondelivery/payment_fee_label');
+		$codFee = 0;
+		$codFeeData = $helper->getCodFee($order_id);
+		if( $codFeeData && is_array($codFeeData) && isset($codFeeData['amount']) && $codFeeData['amount'] != '' && $codFeeData['amount'] > 0 ) {
+			$codFee = $codFeeData['amount'];
+		}
+		
+		
+		$coupon_code = $orderData->getCouponCode();
+		$coupon_title = $orderData->getDiscountDescription();
+		$discount_amount = $orderData->getDiscountAmount();
+		$mp_reward_discount = $orderData->getMpRewardDiscount();
+		$mp_store_credit_discount = $orderData->getMpStoreCreditDiscount();
+		?>
+
+		<div class="checkout-success qrcode-order-public-page">
+			<div class="success-messages">
+				<p><?php echo __('Your order is'); ?> #<span><?php echo $search_orderid; ?> </span></p>
+			</div>
+			<div class="account">
+				<div class="column main">
+					<div class="block block-order-details">
+						<div class="block-title"><strong><?php echo __('Order details'); ?>:</strong></div>
+						
+						<div class="order-date">
+							<span class="label">
+								<?php echo __('Order Date'); ?>: <b><?php echo date('d/m/Y, h:i:s A', strtotime($orderData->getCreatedAt())); ?></b>
+							</span>
+						</div>
+					</div>
+					
+					<div class="block block-order-details-view">
+						<div class="block-title"> <strong><?php echo __('Order Information'); ?></strong></div>
+						<div class="block-content">
+							<div class="box box-order-shipping-address"><strong class="box-title"><span><?php echo __('Shipping Address'); ?></span></strong>
+								<div class="box-content">
+									<address>
+										<?php echo $block->getFormatedAddress($orderData->getShippingAddress()); ?>
+									</address>
+								</div>
+							</div>
+							
+							<div class="box box-order-shipping-method">
+								<strong class="box-title"><span><?php echo __('Shipping Method'); ?></span></strong>
+								<div class="box-content">
+									<?php echo $orderData->getShippingDescription(); ?>
+								</div>
+							</div>
+							<div class="box box-order-billing-address">
+								<strong class="box-title">
+									<span><?php echo __('Billing Address'); ?></span> </strong>
+									<div class="box-content">
+										<address>
+											<?php echo $block->getFormatedAddress($orderData->getBillingAddress()); ?>
+										</address>
+									</div>
+							</div>
+							
+							<div class="box box-order-billing-method">
+								<strong class="box-title"><span><?php echo __('Payment Method'); ?></span></strong>
+								<div class="box-content">
+									<?php echo $block->getPaymentMethodtitle($orderData); ?>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="order-details-items ordered">
+						<div class="order-title"><strong><?php echo __('Items Ordered'); ?></strong></div>
+						<div class="table-wrapper order-items dasdsadsa">
+							<table class="data table table-order-items" id="my-orders-table" summary="Items Ordered">
+								<caption class="table-caption"><?php echo __('Items Ordered'); ?></caption>
+								<thead>
+									<tr>
+									   <th class="col name" colspan="2"><?php echo __('Product Name'); ?></th>
+									   <th class="col sku"><?php echo __('SKU'); ?></th>
+									   <th class="col price"><?php echo __('Price'); ?></th>
+									   <th class="col qty"><?php echo __('Qty'); ?></th>
+									   <th class="col subtotal"><?php echo __('Subtotal'); ?></th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<?php
+									$price_helper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+									$count = 1;
+									
+									$totalQty = 0;
+									
+									foreach ($orderData->getAllVisibleItems() as $item) {
+										$qty = $item->getQtyOrdered();
+										$totalQty += $qty;
+										
+										$product = $helper->getProductById($item->getProductId());
+										$product_url = $product->getProductUrl();
+										$options = $item->getProductOptions();
+										$imageBlock = $block->getLayout()->createBlock('Magento\Catalog\Block\Product\ListProduct');
+										$productImage = $imageBlock->getImage($product, 'category_page_list');
+										$imageHelper  = $objectManager->get('\Magento\Catalog\Helper\Image');
+										$image_url = $imageHelper->init($product, 'product_small_image')->setImageFile($product->getFile())->resize(125, 150)->getUrl();
+										?>
+											<tr id="order-item-row-"<?php echo $item->getProductId(); ?>>
+												<td class="col name" colspan="2" data-th="<?php echo __('Product Name'); ?>">
+													<strong class="product name product-item-name">
+														<a href="<?php echo $product_url; ?>" class="rc-name-update" target="_blank">
+															<img style="display:block;" id="image-42481" class="non-admin-area-product-image rc-image-update" src="<?php echo $image_url; ?>" />
+														</a>
+														<?php echo $item->getName() ?>
+													</strong>
+												</td>
+												<td class="col sku" data-th="<?php echo __('SKU'); ?>">
+													<?php echo $item->getSku(); ?>
+												</td>
+												<td class="col price" data-th="Price">
+													<span class="price-excluding-tax" data-label="<?php echo __('Excl. Tax'); ?>">
+														<span class="cart-price"><?php echo $price_helper->currency($item->getBasePrice(),true,false); ?></span>
+													</span>
+												</td>
+												<td class="col qty" data-th="Qty">
+													<ul class="items-qty">
+														<li class="item">
+															<span class="title"><?php echo __('Ordered'); ?></span>
+															<span class="content"><?php echo (int) $item->getQtyOrdered(); ?></span>
+														</li>
+													</ul>
+												</td>
+												<td class="col subtotal" data-th="<?php echo __('Subtotal'); ?>">
+													<span class="price-excluding-tax" data-label="Excl. Tax">
+														<span class="cart-price"><?php echo $helper->getFormatedPrice($item->getBaseRowTotal()); ?></span>
+													</span>
+												</td>
+											</tr>
+											<?php
+											$count++;
+										}
+									?>
+								</tbody>
+
+								<tfoot>
+									<tr class="qty_ordered">
+									   <th colspan="5" class="mark" scope="row"><?php echo __('Quantity Ordered'); ?></th>
+									   <td class="amount" data-th="<?php echo __('Quantity Ordered'); ?>"><?php echo $totalQty; ?></td>
+									</tr>
+									<tr class="subtotal">
+									   <th colspan="5" class="mark" scope="row"><?php echo __('Subtotal'); ?></th>
+									   <td class="amount" data-th="<?php echo __('Subtotal'); ?>">
+											<?php echo $price_helper->currency($orderData->getBaseSubtotal(),true,false); ?>
+										</td>
+									</tr>
+									
+									<?php if($discount_amount && $discount_amount < 0 && $coupon_code != '') { ?>
+									<tr class="discount">
+										<th colspan="5" class="mark" scope="row"><?php echo __('Discount') . ' (' . __($coupon_title) . ')'; ?></th>
+										<td class="amount" data-th="<?php echo __($coupon_title); ?>"><?php echo $helper->getFormatedPrice($discount_amount); ?></td>
+									</tr>
+									<?php } ?>
+									
+									<?php if($mp_store_credit_discount != '' && $mp_store_credit_discount > 0) { ?>
+									<tr class="mp_store_credit_discount">
+										<th colspan="5" class="mark" scope="row"><?php echo __('Store Credit Discount'); ?></th>
+										<td class="amount" data-th="<?php echo __('Store Credit Discount'); ?>">
+											-<?php echo $helper->getFormatedPrice($mp_store_credit_discount); ?>
+										</td>
+									</tr>
+									<?php } ?> 
+									
+									<?php if($mp_reward_discount != '' && $mp_reward_discount > 0) { ?>
+									<tr class="mp_reward_discount">
+										<th colspan="5" class="mark" scope="row"><?php echo __('Reward Points Discount'); ?></th>
+										<td class="amount" data-th="<?php echo __('Reward Points Discount'); ?>">
+											-<?php echo $helper->getFormatedPrice($mp_reward_discount); ?>
+										</td>
+									</tr>
+									<?php } ?>
+									
+									<?php if($codFee && $codFee > 0) { ?>
+									<tr class="cod_fee">
+										<th colspan="5" class="mark" scope="row"><?php echo __($codLabel); ?></th>
+										<td class="amount" data-th="<?php echo __($codLabel); ?>"><?php echo $helper->getFormatedPrice($codFee); ?></td>
+									</tr>
+									<?php } ?>
+									
+									<tr class="shipping">
+										<th colspan="5" class="mark" scope="row"><?php echo __('Shipping & Handling'); ?></th>
+										<td class="amount" data-th="<?php echo __('Shipping & Handling'); ?>">
+											<?php echo $price_helper->currency($orderData->getBaseShippingAmount(),true,false); ?>
+										</td>
+									</tr>
+									<tr class="totals-tax">
+									   <th colspan="5" class="mark" scope="row"><?php echo __('VAT'); ?></th>
+									   <td class="amount" data-th="<?php echo __('VAT'); ?>"><?php echo $price_helper->currency($orderData->getTaxAmount(),true,false); ?></td>
+									</tr>
+									<tr class="grand_total">
+										<th colspan="5" class="mark" scope="row"><strong><?php echo __('Grand Total'); ?></strong></th>
+										<td class="amount" data-th="<?php echo __('Grand Total'); ?>">
+											<strong><?php echo $price_helper->currency($orderData->getBaseGrandTotal(),true,false); ?></strong>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('qrcode-static-content-block')->toHtml(); ?>
+			
+			<div class="actions-toolbar">
+				<div class="primary">
+					<a class="action primary continue" href="/"><span><?php echo __('Continue Shopping'); ?></span></a>
+				</div>
+			</div>
+		</div>
+		<?php
+	} else
+	{ ?>
+		<div class="checkout-success qrcode-order-public-page">
+			<div class="success-messages">
+				<p><?php echo __('This order is not found'); ?></p>
+			</div>
+		</div>
+		<?php
+	}
+} ?>

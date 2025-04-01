@@ -1,0 +1,13 @@
+--- a/vendor/mageplaza/module-reward-points/Model/Klarna/Orderline/MpRewardPoints.php
++++ b/vendor/mageplaza/module-reward-points/Model/Klarna/Orderline/MpRewardPoints.php
+@@ -61,7 +61,9 @@
+     ) {
+         $this->objectManager = $objectmanager;
+         $this->moduleManager = $moduleManage;
+-        if ($this->moduleManager->isEnabled('Klarna_Core')) {
++        if ($this->moduleManager->isEnabled('Klarna_Core')
++            && class_exists(DataConverter::class)
++        ) {
+             $this->helper = $this->objectManager->get(DataConverter::class);
+         } else {
+             $this->helper = new DataObject([]);

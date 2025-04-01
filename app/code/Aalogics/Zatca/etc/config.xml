@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<zatca>
+			<general>
+				<enable>1</enable>
+				<seller>aalogics</seller>
+				<tax_number>234230</tax_number>
+				<details>"O" VAT not applicable "O" "S" VAT inclusive @ 15% "S"</details>
+				<position>footer</position>
+				<qr_scale>1</qr_scale>
+			</general>
+		</zatca>
+	</default>
+</config>

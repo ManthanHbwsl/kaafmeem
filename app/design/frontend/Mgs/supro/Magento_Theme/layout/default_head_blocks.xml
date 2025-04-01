@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../vendor/magento/framework/Module/etc/module.xsd">
+    <head>
+        <font src="fonts/icofont.woff2"/>
+        <font src="fonts/Linearicons.woff2"/>
+        <font src="fonts/CerebriSans-Regular.woff2"/>
+        <font src="fonts/CerebriSans-Medium.woff2"/>
+        <font src="fonts/CerebriSans-Bold.woff2"/>
+        <css src="css/custom.css" />
+    </head>
+    <body>
+        <referenceContainer name="after.body.start">
+            <referenceBlock name="cookie-status-check" remove="true"/>
+        </referenceContainer>
+    </body>
+</page>

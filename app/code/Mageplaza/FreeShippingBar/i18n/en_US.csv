@@ -1,0 +1,149 @@
+"Use the following code to show the shipping bar block in any place you want","Use the following code to show the shipping bar block in any place you want"
+"CMS Page/Static Block","CMS Page/Static Block"
+"Template .phtml file","Template .phtml file"
+"Layout file","Layout file"
+"Save and Continue Edit","Save and Continue Edit"
+"Edit Free Shipping Bar ""%1""","Edit Free Shipping Bar ""%1"""
+"New Free Shipping Bar","New Free Shipping Bar"
+"Shipping Bar Information","Shipping Bar Information"
+Name,Name
+Status,Status
+Priority,Priority
+"Store Views","Store Views"
+"Customer Groups","Customer Groups"
+"From Date","From Date"
+"To Date","To Date"
+General,General
+"What to display","What to display"
+Goal,Goal
+"Enter the free shipping threshold. Buyers whose orders reach this amount will receive delivery for free","Enter the free shipping threshold. Buyers whose orders reach this amount will receive delivery for free"
+"The first message","The first message"
+"Enter the initial message in the free shipping bar displayed to buyers","Enter the initial message in the free shipping bar displayed to buyers"
+"Below-goal message","Below-goal message"
+"Enter the second message when buyers' orders haven't reached the goal","Enter the second message when buyers' orders haven't reached the goal"
+"Achieve-goal message","Achieve-goal message"
+"Enter the congratulation message when buyers' orders reach the goal","Enter the congratulation message when buyers' orders reach the goal"
+"Free Shipping for order over {{goal}}","Free Shipping for order over {{goal}}"
+"Only {{below_goal}} away for free shipping","Only {{below_goal}} away for free shipping"
+"Congrats! You have got free shipping","Congrats! You have got free shipping"
+Clickable,Clickable
+"If Yes, the bar can be clicked to link to a different URL","If Yes, the bar can be clicked to link to a different URL"
+"Link URL","Link URL"
+"This can be the link to the Free Shipping policy page","This can be the link to the Free Shipping policy page"
+"Open a new page","Open a new page"
+"Select Yes to open the link in a new tab","Select Yes to open the link in a new tab"
+"Design Template","Design Template"
+"Load Template","Load Template"
+"Bar Background Opacity","Bar Background Opacity"
+"Limit value from 0 -> 1. If value higher than 1, system will use default value is 1","Limit value from 0 -> 1. If value higher than 1, system will use default value is 1"
+"Bar Background Color","Bar Background Color"
+"Bar Text Color","Bar Text Color"
+"Bar Link Color","Bar Link Color"
+"Goal text color","Goal text color"
+Image,Image
+"Recommended size: 150x50 px. Supported format: jpg, jpeg, png.","Recommended size: 150x50 px. Supported format: jpg, jpeg, png."
+Fonts,Fonts
+"Font Size","Font Size"
+"Select a template for the free shipping bar","Select a template for the free shipping bar"
+"Select the color for the free shipping bar's background","Select the color for the free shipping bar's background"
+"Select the text's color","Select the text's color"
+"Select the link's color","Select the link's color"
+"Recommended size: 150x50 px. Supported formats: jpg, jpeg, png.","Recommended size: 150x50 px. Supported formats: jpg, jpeg, png."
+Font,Font
+"Select the text's font","Select the text's font"
+"Preview Template","Preview Template"
+"Where to display","Where to display"
+Position,Position
+"Allow Show","Allow Show"
+"Select page(s) to display the free shipping bar","Select page(s) to display the free shipping bar"
+"Which page(s) to show","Which page(s) to show"
+"Enter handle name(s) of page(s) to display free shipping bars.<br>Page(s) are separated by line breaks.","Enter handle name(s) of page(s) to display free shipping bars.<br>Page(s) are separated by line breaks."
+"Include page(s) with URL(s) containing","Include page(s) with URL(s) containing"
+"Page(s) with URL(s) containing the above path(s) will be selected to display free shipping bars.<br>Page(s) are separated by line breaks.","Page(s) with URL(s) containing the above path(s) will be selected to display free shipping bars.<br>Page(s) are separated by line breaks."
+"Exclude pages","Exclude pages"
+"Enter handle name(s) of page(s) NOT to display free shipping bars.<br>Page(s) are separated by line breaks.","Enter handle name(s) of page(s) NOT to display free shipping bars.<br>Page(s) are separated by line breaks."
+"Exclude Page with URL contains","Exclude Page with URL contains"
+"Page(s) with URL(s) containing the above path(s) will not selected to display free shipping bars.<br>Page(s) are separated by line breaks.","Page(s) with URL(s) containing the above path(s) will not selected to display free shipping bars.<br>Page(s) are separated by line breaks."
+"Free Shipping Bar Information","Free Shipping Bar Information"
+"Item does not exist.","Item does not exist."
+"We cannot find a shipping bar to delete.","We cannot find a shipping bar to delete."
+"The Shippingbar has been deleted.","The Shippingbar has been deleted."
+"Something went wrong while deleting shipping bar data. Please review the action log and try again.","Something went wrong while deleting shipping bar data. Please review the action log and try again."
+"The Shippingbar has been duplicated.","The Shippingbar has been duplicated."
+"Something went wrong while duplicating shipping bar data. Please review the action log and try again.","Something went wrong while duplicating shipping bar data. Please review the action log and try again."
+"Free Shipping Bar","Free Shipping Bar"
+"Something went wrong while deleting. Please review the action log and try again.","Something went wrong while deleting. Please review the action log and try again."
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"The Shippingbar has been paused.","The Shippingbar has been paused."
+"You saved the shipping bar.","You saved the shipping bar."
+"We cannot save the shipping bar.","We cannot save the shipping bar."
+"The module is disabled","The module is disabled"
+"Please specific Shipping Bar field(s): %1","Please specific Shipping Bar field(s): %1"
+"Goal must be a number greater than 0","Goal must be a number greater than 0"
+"Please specific font_text field. Valid font must be one of fonts: %1","Please specific font_text field. Valid font must be one of fonts: %1"
+"No such entity ID","No such entity ID"
+"All Pages","All Pages"
+"Specific Pages","Specific Pages"
+Roboto,Roboto
+Open+Sans,Open+Sans
+Lato,Lato
+Montserrat,Montserrat
+Roboto+Condensed,Roboto+Condensed
+Source+Sans+Pro,Source+Sans+Pro
+Oswald,Oswald
+Raleway,Raleway
+Slabo+27px,Slabo+27px
+PT+Sans,PT+Sans
+Merriweather,Merriweather
+Roboto+Slab,Roboto+Slab
+Open+Sans+Condensed:300,Open+Sans+Condensed:300
+Ubuntu,Ubuntu
+Noto+Sans,Noto+Sans
+Poppins,Poppins
+Roboto+Mono,Roboto+Mono
+Playfair+Display,Playfair+Display
+Lora,Lora
+PT+Serif,PT+Serif
+Titillium+Web,Titillium+Web
+Muli,Muli
+Arimo,Arimo
+Fira+Sans,Fira+Sans
+PT+Sans+Narrow,PT+Sans+Narrow
+Nunito,Nunito
+Noto+Serif,Noto+Serif
+Inconsolata,Inconsolata
+Nanum+Gothic,Nanum+Gothic
+Crimson+Text,Crimson+Text
+"The top of the page","The top of the page"
+"Fixed bar at the top of the page","Fixed bar at the top of the page"
+"The top of the content","The top of the content"
+"Fixed bar at the bottom of the page","Fixed bar at the bottom of the page"
+"Insert Snippet","Insert Snippet"
+Enabled,Enabled
+Disabled,Disabled
+"Template Default","Template Default"
+"Template 1","Template 1"
+"Template 2","Template 2"
+"Template 3","Template 3"
+"Template 4","Template 4"
+"Template 5","Template 5"
+"Template 6","Template 6"
+Edit,Edit
+Delete,Delete
+"Delete %1","Delete %1"
+"Are you sure you want to delete a %1 record?","Are you sure you want to delete a %1 record?"
+Pause,Pause
+"Pause %1","Pause %1"
+"Are you sure you want to pause a %1 record?","Are you sure you want to pause a %1 record?"
+Duplicate,Duplicate
+"Duplicate %1","Duplicate %1"
+"Are you sure you want to duplicate a %1 record?","Are you sure you want to duplicate a %1 record?"
+"General Configuration","General Configuration"
+Enable,Enable
+"Select <strong>Yes</strong> to enable this module","Select <strong>Yes</strong> to enable this module"
+"Add New Free Shipping Bar","Add New Free Shipping Bar"
+"Delete Shippingbar","Delete Shippingbar"
+"Are you sure you want to delete selected shippingbars?","Are you sure you want to delete selected shippingbars?"
+ID,ID
+"Created At","Created At"
+"Updated At","Updated At"

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Smile\ElasticsuiteCatalog\Model\Product\Indexer\Fulltext\Datasource\AttributeData">
+            <plugin sortOrder="10" name="Humcommerce_FixSorting::smile_add_data_to_mappers_result"
+                    type="Humcommerce\FixSorting\Plugin\Model\Product\AttributeDataPlugin"/>
+    </type>
+</config>

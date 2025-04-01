@@ -1,0 +1,16 @@
+--- a/vendor/magento/module-quote/Model/QuoteRepository/SaveHandler.php
++++ b/vendor/magento/module-quote/Model/QuoteRepository/SaveHandler.php
+@@ -86,6 +86,13 @@
+      */
+     public function save(CartInterface $quote)
+     {
++        if ($quote->getCustomerIsGuest()
++            && $quote->getCustomer()
++            && $quote->getCustomer()->getId()
++        ) {
++            $quote->setCustomerIsGuest(false);
++        }
++
+         /** @var \Magento\Quote\Model\Quote $quote */
+         // Quote Item processing
+         $items = $quote->getItems();

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="amimageoptimizer">
+            <group id="resize_images" translate="label" type="text" sortOrder="45" showInDefault="1"
+                   showInWebsite="0" showInStore="0">
+                <label>Resize Images Configuration</label>
+                <field id="disable_resizing_for_pages" translate="label" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disable image resizing for specific pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="page_types" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Page Types</label>
+                    <frontend_class>amoptimizer-select</frontend_class>
+                    <source_model>Kaafmeem\ImageOptimizerFix\Model\Config\Source\PageType</source_model>
+                    <validate>validate-select</validate>
+                    <comment>The selected pages are not processed to replace the resized image for mobile and tablet.</comment>
+                    <depends>
+                        <field id="disable_resizing_for_pages">1</field>
+                    </depends>
+                </field>
+                <field id="jpeg_quality" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Quality</label>
+                    <validate>validate-digits validate-digits-range digits-range-1-100 required-entry</validate>
+                    <comment>Jpeg quality for resized images 1-100%.</comment>
+                </field>
+            </group>
+            <group id="convert_images" translate="label" type="text" sortOrder="46" showInDefault="1"
+                   showInWebsite="0" showInStore="0">
+                <label>Convert Images Configuration</label>
+                <field id="webp_quality" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>WebP Quality</label>
+                    <validate>validate-digits validate-digits-range digits-range-1-100 required-entry</validate>
+                    <comment>WebP quality for converted images 1-100%.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

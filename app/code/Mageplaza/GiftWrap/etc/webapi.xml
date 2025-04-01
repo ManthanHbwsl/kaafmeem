@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/guest-carts/:cartId/mpgiftwrap-update-wrap" method="POST">
+        <service class="Mageplaza\GiftWrap\Api\GuestQuoteWrapInterface" method="updateGiftWrap"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/carts/mine/mpgiftwrap-update-wrap" method="POST">
+        <service class="Mageplaza\GiftWrap\Api\QuoteWrapInterface" method="updateGiftWrap"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/mpGiftWrap/update-wrap" method="POST">
+        <service class="Mageplaza\GiftWrap\Api\QuoteWrapInterface" method="set"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::wrap"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/update-wrap" method="DELETE">
+        <service class="Mageplaza\GiftWrap\Api\QuoteWrapInterface" method="remove"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::wrap"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/update-wrap-all-cart" method="POST">
+        <service class="Mageplaza\GiftWrap\Api\QuoteWrapInterface" method="setAll"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::wrap"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/update-wrap-all-cart" method="DELETE">
+        <service class="Mageplaza\GiftWrap\Api\QuoteWrapInterface" method="removeAll"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::wrap"/>
+        </resources>
+    </route>
+
+    <route url="/V1/mpGiftWrap/categories" method="GET">
+        <service class="Mageplaza\GiftWrap\Api\CategoryManagementInterface" method="getList"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::category"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/categories/:id" method="GET">
+        <service class="Mageplaza\GiftWrap\Api\CategoryManagementInterface" method="get"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::category"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/categories/:id" method="DELETE">
+        <service class="Mageplaza\GiftWrap\Api\CategoryManagementInterface" method="delete"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::category"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/categories" method="POST">
+        <service class="Mageplaza\GiftWrap\Api\CategoryManagementInterface" method="save"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::category"/>
+        </resources>
+    </route>
+
+    <route url="/V1/mpGiftWrap/wrappers" method="GET">
+        <service class="Mageplaza\GiftWrap\Api\WrapManagementInterface" method="getList"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::wrap"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/wrappers/:id" method="GET">
+        <service class="Mageplaza\GiftWrap\Api\WrapManagementInterface" method="get"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::wrap"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/wrappers/:id" method="DELETE">
+        <service class="Mageplaza\GiftWrap\Api\WrapManagementInterface" method="delete"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::wrap"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/wrappers" method="POST">
+        <service class="Mageplaza\GiftWrap\Api\WrapManagementInterface" method="save"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::wrap"/>
+        </resources>
+    </route>
+
+    <route url="/V1/mpGiftWrap/orders" method="GET">
+        <service class="Mageplaza\GiftWrap\Api\HistoryManagementInterface" method="getList"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::history"/>
+        </resources>
+    </route>
+    <route url="/V1/mpGiftWrap/orders/:id" method="GET">
+        <service class="Mageplaza\GiftWrap\Api\HistoryManagementInterface" method="get"/>
+        <resources>
+            <resource ref="Mageplaza_GiftWrap::history"/>
+        </resources>
+    </route>
+</routes>

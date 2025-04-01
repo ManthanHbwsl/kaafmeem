@@ -1,0 +1,52 @@
+<?php
+declare(strict_types=1);
+
+/** @var \Mirasvit\Banner\Block\Placeholder\SliderRenderer $block */
+$placeholder = $block->getPlaceholder();
+$banners     = $block->getBanners();
+
+if (!$banners || !count($banners)) {
+    return;
+}
+?>
+<div data-slider-renderer="<?= $placeholder->getId() ?>" class="mstBanner-placeholder__sliderRenderer swiper">
+    <div class="swiper-wrapper">
+        <?php foreach ($banners as $banner): ?>
+            <div class="swiper-slide"><?= $block->getBannerHtml($banner) ?></div>
+        <?php endforeach ?>
+    </div>
+    <?php if ($block->isDisplayNavigation()): ?>
+    <div class="swiper-button-next"><?= $block->getButton('next') ?></div>
+    <div class="swiper-button-prev"><?= $block->getButton('prev') ?></div>
+    <?php endif; ?>
+    <?php if ($block->isDisplayPagination()): ?>
+    <div class="swiper-pagination"></div>
+    <?php endif; ?>
+</div>
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+/>
+
+<script type="module">
+    import Swiper from "https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js"
+
+    const swiper = new Swiper(
+        '[data-slider-renderer="<?= $placeholder->getId() ?>"]',
+        <?= \Mirasvit\Core\Service\SerializeService::encode($block->getSliderConfig()) ?>
+    );
+</script>
+
+<style>
+    <?php if ($block->getButton('next')): ?>
+    [data-slider-renderer="<?= $placeholder->getId() ?>"] .swiper-button-next::after {
+        content: none;
+    }
+    <?php endif; ?>
+    <?php if ($block->getButton('prev')): ?>
+    [data-slider-renderer="<?= $placeholder->getId() ?>"] .swiper-button-prev::after {
+        content: none;
+    }
+    <?php endif; ?>
+</style>

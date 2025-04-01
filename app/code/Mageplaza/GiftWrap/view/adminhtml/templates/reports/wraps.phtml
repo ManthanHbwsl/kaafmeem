@@ -1,0 +1,52 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+?>
+
+<div class="dashboard-item-content-wrap-chart">
+    <div class="table-data col-mp mp-4">
+        <p class="table-name" data-bind="i18n: 'Top Gift Wraps'"></p>
+        <table class="col-mp mp-12">
+            <thead>
+            <tr>
+                <th data-bind="i18n: 'Gift Wrap Name'"></th>
+                <th data-bind="i18n: 'Quantity'"></th>
+                <th data-bind="i18n: 'Total Revenue'"></th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="chart col-mp mp-4" style="width: 500px; height: 500px">
+        <p class="chart-name" data-bind="i18n: 'Gift Wrap Chart'"></p>
+        <canvas id="mpgiftwrap-wrap-chart"></canvas>
+    </div>
+</div>
+<style type="text/css">
+    .dashboard-item-content-wrap-chart, .dashboard-item-content-postcard-chart {
+        width: 80%;
+        margin: auto;
+        display: none;
+    }
+    .dashboard-item-content-wrap-chart .chart, .dashboard-item-content-postcard-chart .chart{
+        margin-left: 10%;
+    }
+</style>

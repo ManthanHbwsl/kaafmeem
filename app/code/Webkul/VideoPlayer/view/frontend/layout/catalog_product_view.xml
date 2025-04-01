@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- 
+    /**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_VideoPlayer
+ * @author    Webkul
+ * @copyright Copyright (c)   Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Webkul_VideoPlayer::css/plyr.min.css" />
+        <css src="Webkul_VideoPlayer::css/style.css" />
+    </head>
+    <body>
+        <referenceBlock name="product.info.media.video">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Webkul\VideoPlayer\ViewModel\VideoPlayerHelper</argument>
+            </arguments>
+            <action method="setTemplate" ifconfig="videoplayer/general_settings/active">
+                <argument name="template" xsi:type="string">Webkul_VideoPlayer::product/view/gallery.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

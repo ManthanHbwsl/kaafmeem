@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_OrderArchive
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mporderarchive" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Order Archive</label>
+            <tab>mageplaza</tab>
+            <resource>Mageplaza_OrderArchive::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Select Yes to enable this module</comment>
+                </field>
+                <field id="show_frontend" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Archived Orders to Customer(s)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If No, archived orders will not appear in the Dashboard of customers</comment>
+                </field>
+            </group>
+            <group id="schedule" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>Automatic Archive Configuration</label>
+                <field id="schedule_for" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Schedule For</label>
+                    <source_model>Mageplaza\OrderArchive\Model\Config\Source\Frequency</source_model>
+                    <backend_model>Mageplaza\OrderArchive\Model\Config\Backend\Order\Frequency</backend_model>
+                    <comment>Set up the schedule in which orders are archived automatically.</comment>
+                </field>
+                <field id="time" translate="label" type="time" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Start Time</label>
+                </field>
+                <field id="day_before" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Excluded Period</label>
+                    <validate>validate-digits</validate>
+                    <comment><![CDATA[
+                            <span>Counted by day(s). The time before the current day in which the orders are not automatically archived.</span><br />
+                            <span>For example, Period = 30 days, today is December 31st, 2018, all orders created from November 30th, 2018 and earlier will be transferred to Archive Grid (if they meet the conditions belows)</span><br />
+                        ]]>
+                    </comment>
+                </field>
+                <field id="order_status" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Order Status</label>
+                    <source_model>Mageplaza\OrderArchive\Model\Config\Source\Status</source_model>
+                </field>
+                <field id="customer_groups" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Customer Group(s)</label>
+                    <source_model>Mageplaza\OrderArchive\Model\Config\Source\CustomerGroups</source_model>
+                </field>
+                <field id="store_views" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Store View(s)</label>
+                    <source_model>Mageplaza\OrderArchive\Model\Config\Source\StoreViews</source_model>
+                </field>
+                <field id="country" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Shipping Countries</label>
+                    <source_model>Mageplaza\OrderArchive\Model\Config\Source\Country</source_model>
+                </field>
+                <field id="specific_country" translate="label" type="multiselect" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <depends>
+                        <field id="country">1</field>
+                    </depends>
+                </field>
+                <field id="order_under" translate="label" sortOrder="60" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Order Total less than</label>
+                    <validate>validate-digits</validate>
+                </field>
+                <field id="run_manually" translate="label comment" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Mageplaza\OrderArchive\Block\Adminhtml\System\Config\Manually</frontend_model>
+                    <comment><![CDATA[
+                            <span>Click Run Manually to archive the orders which meet the above conditions anytime</span><br />
+                            <span>In case you want to archive/ unarchive a specific order, you can use command line</span><br />
+                            <span><b>php bin/magento order:archive order_id</b></span><br />
+                            <span><b>php bin/magento order:unarchive order_id</b></span>
+                        ]]>
+                    </comment>
+                </field>
+            </group>
+            <group id="email" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>Email Notification</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[<span>Email can be sent only when orders are archived automatically by schedule.</span><br />]]></comment>
+                </field>
+                <field id="sender" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="template" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="to" translate="label comment" sortOrder="40" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Send To</label>
+                    <comment>Separated by comma(s)</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

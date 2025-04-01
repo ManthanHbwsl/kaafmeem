@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_OrderArchive
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mporderarchive>
+            <general>
+                <enabled>1</enabled>
+                <show_frontend>1</show_frontend>
+            </general>
+            <schedule>
+                <schedule_for>0</schedule_for>
+                <order_status>0</order_status>
+                <store_views>0</store_views>
+                <country>1</country>
+            </schedule>
+            <email>
+                <enabled>0</enabled>
+                <sender>general</sender>
+                <template>mporderarchive_email_template</template>
+            </email>
+        </mporderarchive>
+    </default>
+</config>

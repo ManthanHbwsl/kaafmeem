@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">	
+	<type name="Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector">
+		<plugin disabled="false" name="Srp_Srp_Plugin_Magento_Tax_Model_Sales_Total_Quote_CommonTaxCollector" sortOrder="10" type="Srp\CustomPrice\Plugin\Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector"/>
+	</type>
+</config>

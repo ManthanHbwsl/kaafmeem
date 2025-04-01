@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_GiftWrap::giftwrap" title="Gift Wrap" module="Mageplaza_GiftWrap" sortOrder="110" resource="Mageplaza_GiftWrap::giftwrap" parent="Magento_Backend::marketing"/>
+        <add id="Mageplaza_GiftWrap::category" title="Manage Wrap Categories" module="Mageplaza_GiftWrap" sortOrder="10" action="mpgiftwrap/category" resource="Mageplaza_GiftWrap::category" parent="Mageplaza_GiftWrap::giftwrap"/>
+        <add id="Mageplaza_GiftWrap::wrap" title="Manage Gift Wrappers" module="Mageplaza_GiftWrap" sortOrder="20" action="mpgiftwrap/wrap" resource="Mageplaza_GiftWrap::wrap" parent="Mageplaza_GiftWrap::giftwrap"/>
+        <add id="Mageplaza_GiftWrap::history" title="Manage Wrapping Orders" module="Mageplaza_GiftWrap" sortOrder="30" action="mpgiftwrap/history" resource="Mageplaza_GiftWrap::history" parent="Mageplaza_GiftWrap::giftwrap"/>
+        <add id="Mageplaza_GiftWrap::configuration" title="Configuration" module="Mageplaza_GiftWrap" sortOrder="1000" action="adminhtml/system_config/edit/section/mpgiftwrap" resource="Mageplaza_GiftWrap::configuration" parent="Mageplaza_GiftWrap::giftwrap"/>
+    </menu>
+</config>

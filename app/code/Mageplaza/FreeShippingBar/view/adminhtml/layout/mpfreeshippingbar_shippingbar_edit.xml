@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_FreeShippingBar
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <head>
+        <script src="Mageplaza_Core::js/jscolor.min.js"/>
+        <css src="Mageplaza_FreeShippingBar::css/source/preview.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Mageplaza\FreeShippingBar\Block\Adminhtml\Shippingbar\Edit" name="freeshippingbar_shippingbar_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Mageplaza\FreeShippingBar\Block\Adminhtml\Shippingbar\Edit\Tabs" name="freeshippingbar_shippingbar_tabs">
+                <block class="Mageplaza\FreeShippingBar\Block\Adminhtml\Shippingbar\Edit\Tab\Shippingbar" name="freeshippingbar_shippingbar_edit_tab_shippingbar"/>
+                <block class="Mageplaza\FreeShippingBar\Block\Adminhtml\Shippingbar\Edit\Tab\Whattodisplay" name="freeshippingbar_shippingbar_edit_tab_whattodisplay"/>
+                <block class="Mageplaza\FreeShippingBar\Block\Adminhtml\Shippingbar\Edit\Tab\Wheretodisplay" name="freeshippingbar_shippingbar_edit_tab_wheretodisplay"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">shippingbar</argument>
+                    <argument name="block" xsi:type="string">freeshippingbar_shippingbar_edit_tab_shippingbar</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">whattodisplay_section</argument>
+                    <argument name="block" xsi:type="string">freeshippingbar_shippingbar_edit_tab_whattodisplay</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">wheretodisplay_section</argument>
+                    <argument name="block" xsi:type="string">freeshippingbar_shippingbar_edit_tab_wheretodisplay</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,72 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Mageplaza\GiftWrap\Block\Product\View\Button */
+
+use Mageplaza\GiftWrap\Model\Config\Source\WrapType;
+use Mageplaza\GiftWrap\Helper\Data;
+
+if ( $block->isDisabled() ) {
+    return;
+}
+
+$wraps      = $block->getHelper()->getWraps(WrapType::GIFT_WRAP_WRAP_TYPE);
+
+if (!$wraps || $wraps === '[]') {
+    return;
+}
+
+?>
+
+<div class="mpgiftwrap-block" data-bind="scope:'mpgiftwrap-button'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        ".mpgiftwrap-block": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "mpgiftwrap-button": {
+                        "component": "Mageplaza_GiftWrap/js/view/product",
+                        "config": {
+                            "addLabel": "<?=/* @noEscape */ $block->getHelper()->getAddLabel() ?>",
+                            "changeLabel": "<?=/* @noEscape */ $block->getHelper()->getChangeLabel() ?>",
+                            "categories": <?=/* @noEscape */ $block->getHelper()->getCategories() ?>,
+                            "wraps": <?=/* @noEscape */ $wraps ?>,
+                            "postcards": <?=/* @noEscape */ $block->getHelper()->getWraps(WrapType::GIFT_WRAP_POST_CARD_TYPE) ?>,
+                            "giftWrapIcon": "<?=/* @noEscape */ $block->getHelper()->getGiftWrapIcon() ?>",
+                            "isMessageEnabled": "<?=/* @noEscape */ $block->getHelper()->isEnabledGiftMessage() ?>",
+                            "maxChar": "<?=/* @noEscape */ $block->getHelper()->getMaxCharacters() ?>",
+                            "giftMessageFee": "<?=/* @noEscape */ $block->getHelper()->getGiftMessageFee() ?>",
+                            "savedWrap": <?=/* @noEscape */ $block->getSavedWrap(Data::GIFT_WRAP_DATA) ?>,
+                            "savedPostcard": <?=/* @noEscape */ $block->getSavedWrap(Data::GIFT_WRAP_POSTCARD_DATA) ?>,
+                            "giftMessageVsb": 1,
+                            "itemId": 0,
+                            "description": "<?=/* @noEscape */ $block->getHelper()->getDescription() ?>"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>

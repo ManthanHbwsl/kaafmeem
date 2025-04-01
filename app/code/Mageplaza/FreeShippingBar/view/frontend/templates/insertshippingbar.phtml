@@ -1,0 +1,95 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_FreeShippingBar
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var Mageplaza\FreeShippingBar\Block\FreeShippingBar $block */
+$ruleId                = $block->getData('rule_id');
+$shippingBar = $block->getShippingBarSnippet()
+?>
+<?php if ($shippingBar->getId()): ?>
+    <?php
+        $clickable = $shippingBar->getClickAble();
+        $linkURL   = $clickable ? $shippingBar->getUrlShippingbar() : 'javascript:void(0)';
+        $target    = (int) $shippingBar->getOpenNewPage() === 1 ? '_blank' : '_self';
+
+        $imageUrl  = $block->getImageBackgroundUrl($shippingBar->getImage(), $shippingBar->getTemplate());
+        $styleCode = [
+            'backgroundColor' => $shippingBar->getBarBackground(),
+            'opacity'         => $shippingBar->getBarOpacity() ?: 1,
+            'backgroundImage' => $imageUrl ? "background-image: url('" . $imageUrl . "');" : '',
+            'fontFamily'      => $shippingBar->getStringFontConnect(),
+            'fontSize'        => $shippingBar->getFontSize() . 'px',
+            'fontText'        => $shippingBar->getFontText(),
+            'wrapperColor'    => $clickable ? $shippingBar->getBarLinkColor() : $shippingBar->getBarTextColor(),
+            'cursor'          => $clickable ? 'pointer' : 'unset',
+            'ruleColor'       => $shippingBar->getGoalTextColor()
+        ];
+        ?>
+        <link href="https://fonts.googleapis.com/css?family=<?= /** @noEscape */ $shippingBar->getStringFontConnect() ?>" rel="stylesheet">
+        <div class="wrapper-mp-freeshippingbar" id="wrapper-mp-freeshippingbar-<?= /** @noEscape */ $ruleId ?>" area-ruleId= <?= /** @noEscape */ $ruleId ?>>
+            <a href="<?= /** @noEscape */ $linkURL ?>" target="<?= /** @noEscape */ $target ?>">
+                <div class='mpfsb freeshippingbar-<?= /** @noEscape */ $ruleId ?>'>
+                    <div class="content-shippingbar">
+                        <div class="control-bar" data-bind="scope: 'shippingbar<?= /** @noEscape */ $ruleId ?>'">
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <style type="text/css">
+            #wrapper-mp-freeshippingbar-<?= /** @noEscape */ $ruleId ?> a {
+                text-decoration: none;
+                color: <?= /** @noEscape */ $styleCode['wrapperColor'] ?>;
+                cursor: <?= /** @noEscape */ $styleCode['cursor'] ?>;
+            }
+            .freeshippingbar-<?= /** @noEscape */ $ruleId ?> {
+                background-color: <?= /** @noEscape */ $shippingBar->getBarBackground() ?>;
+                font-size: <?= /** @noEscape */ $styleCode['fontSize'] ?>;
+                font-family: '<?= /** @noEscape */ $styleCode['fontText'] ?>';
+                opacity: <?= /** @noEscape */ $styleCode['opacity'] ?>;
+                <?= /** @noEscape */ $styleCode['backgroundImage'] ?>
+            }
+            .freeshippingbar-<?= /** @noEscape */ $ruleId ?> .goal,
+            .freeshippingbar-<?= /** @noEscape */ $ruleId ?> .below_goal {
+                color: <?= /** @noEscape */ $styleCode['ruleColor'] ?>;
+            }
+        </style>
+        <script type="text/x-magento-init">
+           {
+                "*": {
+                   "Magento_Ui/js/core/app": {
+                       "components": {
+                           "shippingbar<?= /** @noEscape */ $ruleId ?>": {
+                               "component": "Mageplaza_FreeShippingBar/js/view/shippingbar",
+                               "config": {
+                                       "rule_id": <?= /** @noEscape */ $ruleId ?>,
+                                       "goal": <?= /** @noEscape */ $block->getGoalByStore($shippingBar->getGoal()) ?>,
+                                       "first_message": "<?= /** @noEscape */ $shippingBar->getFirstMessage() ?>",
+                                       "below_goal_message": "<?= /** @noEscape */ $shippingBar->getBelowGoalMessage() ?>",
+                                       "achieve_message": "<?= /** @noEscape */ $shippingBar->getAchieveMessage() ?>"
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+        </script>
+<?php endif; ?>

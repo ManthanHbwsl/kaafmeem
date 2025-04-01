@@ -1,0 +1,26 @@
+{
+    "name": "webiators\/autoinvoiceandshipment",
+    "description": "With the help of AutoInvoice And Shipment extension by Webiators Admins no longer have to create invoice\/shipment manually. The invoice is automatically created by the extension after a customer finishes placing the order.",
+    "require": [],
+    "type": "magento2-module",
+    "version": "1.0.2",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "authors": [
+        {
+            "name": "Webiators Technologies Private Limited",
+            "email": "support@webiators.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Webiators\\AutoInvoiceAndShipment\\": ""
+        }
+    }
+}

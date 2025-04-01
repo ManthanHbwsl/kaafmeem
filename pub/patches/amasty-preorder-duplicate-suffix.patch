@@ -1,0 +1,17 @@
+Index: vendor/amasty/preorder/Plugin/Sales/Model/Order/Item/ModifyName.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/vendor/amasty/preorder/Plugin/Sales/Model/Order/Item/ModifyName.php b/vendor/amasty/preorder/Plugin/Sales/Model/Order/Item/ModifyName.php
+--- a/vendor/amasty/preorder/Plugin/Sales/Model/Order/Item/ModifyName.php	
++++ b/vendor/amasty/preorder/Plugin/Sales/Model/Order/Item/ModifyName.php	(date 1631790750339)
+@@ -22,7 +22,7 @@
+     public function afterGetName(Item $subject, string $result): string
+     {
+         $preorderInformation = $this->getPreorderInformation->execute($subject);
+-        if ($preorderInformation->isPreorder()) {
++        if ($preorderInformation->isPreorder() && stripos($result, $preorderInformation->getNote()) === false) {
+             $result .=  ' ' . $preorderInformation->getNote();
+         }
+ 

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category   Webiators
+ * @package    Webiators_AutoInvoiceAndShipment
+ * @author     Webiators Team
+ * @copyright  Copyright (c) Webiators Technologies Private Limited. ( https://webiators.com ).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="webiators" translate="label" sortOrder="10">
+            <label>Webiators</label>
+        </tab>
+        <section id="webiator_autoinvoice" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Auto Invoice and Shipment</label>
+            <tab>webiators</tab>
+            <resource>Webiators_AutoInvoiceAndShipment::webiator_autoinvoice_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+
+                <field id="enable_autoinvoiceandshipment" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Module Enable</label>
+                    <comment>Enable AutoInvoice and Shipment Module</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="adminpayments" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label" type="multiselect">
+                    <label>Select Payment Methods</label>
+                    <comment/>
+                    <source_model>Webiators\AutoInvoiceAndShipment\Model\Config\Source\Adminpayments</source_model>
+                    <comment>Select payment methods for which Autoinvoice and Autoshipment will work></comment>
+                </field>
+
+                <field id="enable_autoinvoice" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Automatic Invoice Generation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="emailInvoice" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Email For Invoice</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_autoinvoice">1</field>
+                    </depends>
+                    <comment>Send notify email after invoice created automatically</comment>
+                </field>
+
+                <field id="enable_autoshipment" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Automatic Shipment Generation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

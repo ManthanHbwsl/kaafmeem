@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_FreeShippingBar
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_FreeShippingBar::freeshippingbar" title="Free Shipping Bar" module="Mageplaza_FreeShippingBar" sortOrder="100" resource="Mageplaza_FreeShippingBar::freeshippingbar" parent="Magento_Backend::marketing"/>
+        <add id="Mageplaza_FreeShippingBar::shippingbar" title="Free Shipping Bar Management" module="Mageplaza_FreeShippingBar" sortOrder="10" action="mpfreeshippingbar/shippingbar" resource="Mageplaza_FreeShippingBar::shippingbar" parent="Mageplaza_FreeShippingBar::freeshippingbar"/>
+        <add id="Mageplaza_FreeShippingBar::configuration" title="Configuration" module="Mageplaza_FreeShippingBar" sortOrder="1000" action="adminhtml/system_config/edit/section/freeshippingbar" resource="Mageplaza_FreeShippingBar::configuration" parent="Mageplaza_FreeShippingBar::freeshippingbar"/>
+    </menu>
+</config>

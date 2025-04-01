@@ -1,0 +1,46 @@
+& when (@media-common = true) {
+    .mstBanner-placeholder__lightboxRenderer {
+        position:        fixed;
+        display:         flex;
+        z-index:         100;
+        background:      rgba(0, 0, 0, .7);
+        left:            0;
+        right:           0;
+        top:             0;
+        bottom:          0;
+        justify-content: center;
+        align-items:     center;
+        opacity:         0;
+        visibility:      hidden;
+        transition:      visibility 0s, opacity 1s;
+
+        &._active {
+            visibility: visible;
+            opacity:    1;
+        }
+
+        .lightbox-content {
+            position: relative;
+
+            .mstBanner__close {
+                position:        absolute;
+                right:           -30px;
+                top:             0;
+                width:           30px;
+                height:          30px;
+                display:         flex;
+                align-items:     center;
+                justify-content: center;
+                color:           #666666;
+                cursor:          pointer;
+                z-index:         1;
+                font-size:       30px;
+                background:      rgba(0, 0, 0, 0.8);
+
+                &:hover {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}

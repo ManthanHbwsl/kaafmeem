@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.LocationsInterface.php
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_FreeShippingBar
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/mpFreeShippingBar/list" method="GET">
+        <service class="Mageplaza\FreeShippingBar\Api\ShippingBarRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Mageplaza_FreeShippingBar::shippingbar"/>
+        </resources>
+    </route>
+    <route url="/V1/mpFreeShippingBar/config" method="GET">
+        <service class="Mageplaza\FreeShippingBar\Api\ShippingBarRepositoryInterface" method="getConfig"/>
+        <resources>
+            <resource ref="Mageplaza_FreeShippingBar::shippingbar"/>
+        </resources>
+    </route>
+    <route url="/V1/mpFreeShippingBar/save" method="POST">
+        <service class="Mageplaza\FreeShippingBar\Api\ShippingBarRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Mageplaza_FreeShippingBar::shippingbar"/>
+        </resources>
+    </route>
+    <route url="/V1/mpFreeShippingBar/delete/:id" method="DELETE">
+        <service class="Mageplaza\FreeShippingBar\Api\ShippingBarRepositoryInterface" method="delete"/>
+        <resources>
+            <resource ref="Mageplaza_FreeShippingBar::shippingbar"/>
+        </resources>
+    </route>
+    <route url="/V1/mpFreeShippingBar/mine/shippingbar" method="GET">
+        <service class="Mageplaza\FreeShippingBar\Api\ShippingBarRepositoryInterface" method="getCustomerShippingBars"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/mpFreeShippingBar/guest/shippingbar" method="GET">
+        <service class="Mageplaza\FreeShippingBar\Api\ShippingBarRepositoryInterface" method="getGuestShippingBars"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

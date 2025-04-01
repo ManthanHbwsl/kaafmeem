@@ -1,0 +1,40 @@
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+.dashboard-item-content-postcard-chart {
+    margin-top: 30px;
+}
+
+.dashboard-item-content-wrap-chart table thead th, .dashboard-item-content-postcard-chart table thead th {
+    text-align: left;
+}
+
+.dashboard-item-content-wrap-chart table thead, .dashboard-item-content-postcard-chart table thead {
+    border-bottom: 1px solid black;
+}
+
+.dashboard-item-content-wrap-chart p, .dashboard-item-content-postcard-chart p {
+    font-size: 2em;
+}
+
+.dashboard-item-content-wrap-chart > .col-mp, .dashboard-item-content-postcard-chart > .col-mp {
+    float: none;
+    display: inline-block;
+}

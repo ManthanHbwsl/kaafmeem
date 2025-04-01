@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Aneel Kumar, Inc. All rights reserved.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<link src="Custom_City::js/address-city.js"/>
+	</head>
+    <body>
+		<referenceContainer name="head.additional">
+				<block class="Custom\City\Block\City" name="city.block" template="Custom_City::city/city.phtml" />
+		</referenceContainer>
+	</body>
+</page>

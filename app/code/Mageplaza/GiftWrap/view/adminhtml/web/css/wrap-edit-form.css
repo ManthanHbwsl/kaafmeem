@@ -1,0 +1,52 @@
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+#wrap_tabs_main_content .field-amount .admin__field {
+    position: relative;
+    width: 16rem;
+}
+
+#wrap_tabs_main_content .field-amount .admin__field .admin__control-text {
+    padding-left: 27px;
+    padding-bottom: 6px;
+}
+
+#wrap_tabs_main_content .field-amount .admin__field label.addafter {
+    position: absolute;
+    left: 1rem;
+    top: 6px;
+    color: #858585;
+}
+
+#wrap_tabs_main_content img {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+
+#wrap_tabs_main_content input[type="file"] {
+    padding: 0;
+}
+
+#wrap_tabs_main_content .delete-image {
+    display: block;
+    margin: 5px 0;
+    white-space: nowrap;
+}

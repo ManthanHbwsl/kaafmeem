@@ -1,0 +1,126 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_FreeShippingBar
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var Mageplaza\FreeShippingBar\Block\FreeShippingBar $block */
+$shippingBarCollection = $block->getShippingbarCollection();
+$checkVar = false;
+?>
+<?php foreach ($shippingBarCollection as $shippingBar): ?>
+    <?php
+    $rule_id = $shippingBar->getRuleId();
+    $position = $shippingBar->getPosition();
+    $clickable     = $shippingBar->getClickAble();
+    $linkURL       = $clickable ? $shippingBar->getUrlShippingbar() : 'javascript:void(0)';
+    $target        = (int) $shippingBar->getOpenNewPage() === 1 ? '_blank' : '_self';
+    $imageUrl = $block->getImageBackgroundUrl($shippingBar->getImage(), $shippingBar->getTemplate());
+    if ($position === 'top_page') {
+        $checkVar = true;
+    }
+    switch ($position) {
+        case \Mageplaza\FreeShippingBar\Model\Shippingbar\Position::TOP_FIXED_BAR:
+            $positionCss    = 'top:0; position:fixed; margin-top:0px;';
+            $filler         = 'top';
+            break;
+        case \Mageplaza\FreeShippingBar\Model\Shippingbar\Position::BOTTOM_FIXED_BAR:
+            $positionCss       = 'bottom:0; position:fixed;';
+            $filler            = 'bottom';
+            break;
+        default:
+            $positionCss = '';
+            $filler      = '';
+    }
+    $styleCode = [
+        'backgroundColor' => $shippingBar->getBarBackground(),
+        'opacity'         => $shippingBar->getBarOpacity() ?: 1,
+        'backgroundImage' => $imageUrl ? "background-image: url('" . $imageUrl . "');" : '',
+        'fontFamily'      => $shippingBar->getStringFontConnect(),
+        'fontSize'        => $shippingBar->getFontSize() . 'px',
+        'fontText'        => $shippingBar->getFontText(),
+        'wrapperColor'    => $clickable ? $shippingBar->getBarLinkColor() : $shippingBar->getBarTextColor(),
+        'cursor'          => $clickable ? 'pointer' : 'unset',
+        'ruleColor'       => $shippingBar->getGoalTextColor(),
+        'position'        => $positionCss,
+        'filler'          => $filler
+    ]; ?>
+            <link href="https://fonts.googleapis.com/css?family=<?= /** @noEscape */ $shippingBar->getStringFontConnect() ?>" rel="stylesheet">
+            <?php if ($checkVar && $position === 'top_fixed_bar'):  ?>
+            <div class="wrapper-mp-freeshippingbar" style="margin-top: 0px;" id="wrapper-mp-freeshippingbar-<?= /** @noEscape */ $rule_id ?>" area-ruleId= <?= /** @noEscape */ $rule_id ?>>
+            <?php else: ?>
+            <div class="wrapper-mp-freeshippingbar" id="wrapper-mp-freeshippingbar-<?= /** @noEscape */ $rule_id ?>" area-ruleId= <?= /** @noEscape */ $rule_id ?>>
+            <?php endif; ?>
+                <a href="<?= /** @noEscape */ $linkURL ?>" target="<?= /** @noEscape */ $target ?>">
+                    <div class='mpfsb freeshippingbar-<?= /** @noEscape */ $rule_id ?>'>
+                        <div class="content-shippingbar">
+                            <div class="control-bar" data-bind="scope: 'shippingbar<?= /** @noEscape */ $rule_id ?>'">
+                                <!-- ko template: getTemplate() --><!-- /ko -->
+                                <script type="text/x-magento-init">
+                                    {
+                                         "*": {
+                                            "Magento_Ui/js/core/app": {
+                                                "components": {
+                                                    "shippingbar<?= /** @noEscape */ $rule_id ?>": {
+                                                        "component": "Mageplaza_FreeShippingBar/js/view/shippingbar",
+                                                        "config": {
+                                                            "rule_id": <?= /** @noEscape */ $rule_id ?>,
+                                                            "goal": <?= /** @noEscape */ $block->getGoalByStore($shippingBar->getGoal()) ?>,
+                                                            "first_message": "<?= /** @noEscape */ $shippingBar->getFirstMessage() ?>",
+                                                            "below_goal_message": "<?= /** @noEscape */ $shippingBar->getBelowGoalMessage() ?>",
+                                                            "achieve_message": "<?= /** @noEscape */ $shippingBar->getAchieveMessage() ?>"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <style type="text/css">
+                <?php if (isset($styleCode['filler']) && $styleCode['filler'] === 'top'): ?>
+                    #wrapper-mp-freeshippingbar-<?= /** @noEscape */ $rule_id ?> { margin-top:40px; }
+                <?php endif; ?>
+
+                #wrapper-mp-freeshippingbar-<?= /** @noEscape */ $rule_id ?> a {
+                    text-decoration: none;
+                    color: <?= /** @noEscape */ $styleCode['wrapperColor'] ?>;
+                    cursor: <?= /** @noEscape */ $styleCode['cursor'] ?>;
+                }
+                .freeshippingbar-<?= /** @noEscape */ $rule_id ?> {
+                    background-color: <?= /** @noEscape */ $shippingBar->getBarBackground() ?>;
+                    font-size: <?= /** @noEscape */ $styleCode['fontSize'] ?>;
+                    font-family: '<?= /** @noEscape */ $styleCode['fontText'] ?>';
+                    opacity: <?= /** @noEscape */ $styleCode['opacity'] ?>;
+                    <?= /** @noEscape */ $styleCode['backgroundImage'] ?>
+                    <?= /** @noEscape */ $styleCode['position'] ?>
+                }
+                .freeshippingbar-<?= /** @noEscape */ $rule_id ?> .goal,
+                .freeshippingbar-<?= /** @noEscape */ $rule_id ?> .below_goal {
+                    color: <?= /** @noEscape */ $styleCode['ruleColor'] ?>;
+                }
+                <?php if (isset($styleCode['filler']) && $styleCode['filler'] === 'bottom'): ?>
+                    .page-wrapper { margin-bottom: 40px; }
+                <?php endif; ?>
+            </style>
+
+<?php endforeach; ?>

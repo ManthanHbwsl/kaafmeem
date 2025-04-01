@@ -1,0 +1,99 @@
+"Order Id","Order Id"
+"This order no longer exists.","This order no longer exists."
+"The order has been archived.","The order has been archived."
+"An error occurred while archiving the order. Please try again later. %1","An error occurred while archiving the order. Please try again later. %1"
+"Archive Orders","Archive Orders"
+Success!,Success!
+"An error occurred while running manually. Please try again later. %1","An error occurred while running manually. Please try again later. %1"
+"Please enable module!","Please enable module!"
+"Cannot archive order #%1. Please try again later. %2","Cannot archive order #%1. Please try again later. %2"
+"A total of %1 order(s) has been archived.","A total of %1 order(s) has been archived."
+"Cannot unarchive order #%1. Please try again later. %2","Cannot unarchive order #%1. Please try again later. %2"
+"A total of %1 order(s) has been unarchived.","A total of %1 order(s) has been unarchived."
+"The order has been unarchived.","The order has been unarchived."
+"An error occurred while unarchiving the order. Please try again later.","An error occurred while unarchiving the order. Please try again later."
+"We can't save the cron expression. %1","We can't save the cron expression. %1"
+"Specific Countries","Specific Countries"
+"All Countries","All Countries"
+Disable,Disable
+Daily,Daily
+Weekly,Weekly
+Monthly,Monthly
+"-- Please Select --","-- Please Select --"
+Canceled,Canceled
+Closed,Closed
+Complete,Complete
+"Suspected Fraud","Suspected Fraud"
+"On Hold","On Hold"
+Pending,Pending
+Processing,Processing
+"This order has been archived.","This order has been archived."
+"Are you sure to unarchive this order?","Are you sure to unarchive this order?"
+Unarchive,Unarchive
+"Are you sure to archive this order?","Are you sure to archive this order?"
+Archive,Archive
+"Run Manually","Run Manually"
+"Auto archive order notification at %store_name","Auto archive order notification at %store_name"
+"Hi Admin,","Hi Admin,"
+"The automatic order archive schedule has been run. There are total ","The automatic order archive schedule has been run. There are total "
+"%num_order order(s)","%num_order order(s)"
+" moved to Archive Grid."," moved to Archive Grid."
+"You can see more details on ","You can see more details on "
+"Sales > Archive Orders","Sales > Archive Orders"
+"Best Regard,","Best Regard,"
+"Are you sure to run manually?","Are you sure to run manually?"
+UnArchive,UnArchive
+"Order Archive","Order Archive"
+General,General
+Enable,Enable
+"Select Yes to enable this module","Select Yes to enable this module"
+"Show Archived Orders to Customer(s)","Show Archived Orders to Customer(s)"
+"If No, archived orders will not appear in the Dashboard of customers","If No, archived orders will not appear in the Dashboard of customers"
+"Automatic Archive Configuration","Automatic Archive Configuration"
+"Schedule For","Schedule For"
+"Set up the schedule in which orders are archived automatically.","Set up the schedule in which orders are archived automatically."
+"Start Time","Start Time"
+"Excluded Period","Excluded Period"
+"<span>Counted by day(s). The time before the current day in which the orders are not automatically archived.</span><br />
+                            <span>For example, Period = 30 days, today is December 31st, 2018, all orders created from November 30th, 2018 and earlier will be transferred to Archive Grid (if they meet the conditions belows)</span><br />","<span>Counted by day(s). The time before the current day in which the orders are not automatically archived.</span><br />
+                            <span>For example, Period = 30 days, today is December 31st, 2018, all orders created from November 30th, 2018 and earlier will be transferred to Archive Grid (if they meet the conditions belows)</span><br />"
+"Order Status","Order Status"
+"Customer Group(s)","Customer Group(s)"
+"Store View(s)","Store View(s)"
+"Shipping Countries","Shipping Countries"
+"Order Total less than","Order Total less than"
+"<span>Click Run Manually to archive the orders which meet the above conditions anytime</span><br />
+                            <span>In case you want to archive/ unarchive a specific order, you can use command line</span><br />
+                            <span><b>php bin/magento order:archive order_id</b></span><br />
+                            <span><b>php bin/magento order:unarchive order_id</b></span>","<span>Click Run Manually to archive the orders which meet the above conditions anytime</span><br />
+                            <span>In case you want to archive/ unarchive a specific order, you can use command line</span><br />
+                            <span><b>php bin/magento order:archive order_id</b></span><br />
+                            <span><b>php bin/magento order:unarchive order_id</b></span>"
+"Email Notification","Email Notification"
+"<span>Email can be sent only when orders are archived automatically by schedule.</span><br />","<span>Email can be sent only when orders are archived automatically by schedule.</span><br />"
+Sender,Sender
+"Email Template","Email Template"
+"Send To","Send To"
+"Separated by comma(s)","Separated by comma(s)"
+"All Store Views","All Store Views"
+"Purchase Point","Purchase Point"
+"Archive Order(s)","Archive Order(s)"
+"Are you sure to unarchive these selected orders?","Are you sure to unarchive these selected orders?"
+ID,ID
+"Purchase Date","Purchase Date"
+"Bill-to Name","Bill-to Name"
+"Ship-to Name","Ship-to Name"
+"Grand Total (Base)","Grand Total (Base)"
+"Grand Total (Purchased)","Grand Total (Purchased)"
+Status,Status
+"Billing Address","Billing Address"
+"Shipping Address","Shipping Address"
+"Shipping Information","Shipping Information"
+"Customer Email","Customer Email"
+"Customer Group","Customer Group"
+Subtotal,Subtotal
+"Shipping and Handling","Shipping and Handling"
+"Customer Name","Customer Name"
+"Payment Method","Payment Method"
+"Total Refunded","Total Refunded"
+"Are you sure to archive these selected orders?","Are you sure to archive these selected orders?"

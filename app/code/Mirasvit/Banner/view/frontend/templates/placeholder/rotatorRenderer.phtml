@@ -1,0 +1,12 @@
+<?php
+/** @var \Mirasvit\Banner\Block\Placeholder\RotatorRenderer $block */
+$placeholder = $block->getPlaceholder();
+$banners     = $block->getBanners();
+
+if (!$banners || !count($banners)) {
+    return;
+}
+?>
+<div class="mstBanner-placeholder__rotatorRenderer">
+    <?php foreach ($banners as $banner): ?><?= $block->getBannerHtml($banner) ?><?php endforeach ?>
+</div>

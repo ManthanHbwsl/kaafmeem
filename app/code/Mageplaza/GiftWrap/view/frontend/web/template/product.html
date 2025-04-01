@@ -1,0 +1,201 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+
+<!-- ko if: selectedWrap -->
+<p class="note">
+    <!-- ko if: selectedWrap().all_cart -->
+    <b><i data-bind="i18n: 'Gift Wrap All Cart'"></i></b>
+    <!-- /ko -->
+
+    <!-- ko ifnot: selectedWrap().all_cart -->
+    <span data-bind="i18n: 'Wrapper: '"></span>
+    <b data-bind="text: selectedWrap().name + ' (' + selectedWrap().price + ')'"></b>
+    <br/>
+    <!-- ko if: giftMessageVsb && useGiftMessage -->
+    <span data-bind="i18n: 'Gift Note: '"></span>
+    <b data-bind="text: giftMessage() + ' (' + giftMessageFee + ')'"></b>
+    <!-- /ko -->
+    <!-- /ko -->
+</p>
+<!-- /ko -->
+<!-- ko if: selectedPostcard -->
+<p class="note">
+    <!-- ko if: selectedPostcard().all_cart -->
+    <b><i data-bind="i18n: 'Postcard All Cart'"></i></b>
+    <!-- /ko -->
+
+    <!-- ko ifnot: selectedPostcard().all_cart -->
+    <span data-bind="i18n: 'Postcard: '"></span>
+    <b data-bind="text: selectedPostcard().name + ' (' + selectedPostcard().price + ')'"></b>
+    <br/>
+    <!-- ko if: postcardMessage() -->
+    <span data-bind="i18n: 'Message: '"></span>
+    <b data-bind="text: giftPostcardMessage()"></b>
+    <!-- /ko -->
+    <!-- /ko -->
+</p>
+<!-- /ko -->
+
+<!-- ko if: !selectedWrap().all_cart -->
+<!-- ko if: giftWrapIcon -->
+<img class="mpgiftwrap-icon" data-bind="attr:{src: giftWrapIcon, alt: 'icon'}">
+<!-- /ko -->
+<a class="mpgiftwrap-toggle" data-bind="click: showModal">
+    <!-- ko ifnot: selectedWrap -->
+    <span data-bind="text: addLabel"></span>
+    <!-- /ko -->
+    <!-- ko if: selectedWrap -->
+    <span data-bind="text: changeLabel"></span>
+    <!-- /ko -->
+</a>
+<!-- /ko -->
+<div class="mpgiftwrap-modal" data-bind="afterRender: setModalElement">
+    <div class="mpgiftwrap-category">
+        <label for="mpgiftwrap-category-select">
+            <span data-bind="i18n: 'Category'"></span>
+        </label>
+        <select class="select" name="mpgiftwrap-category" id="mpgiftwrap-category-select" data-bind="
+                value: category,
+                options: categories,
+                optionsText: 'name',
+                optionsValue: 'category_id',
+                optionsCaption: $t('-- Please select a category --')">
+        </select>
+    </div>
+    <!-- ko if: wrapOptions().length -->
+    <form class="wrap-box" action="">
+        <strong data-bind="i18n: 'Gift Wrap'"></strong>
+        <div class="mpgiftwrap-wrap"
+             data-bind="css: 'mpgiftwrap-wrap-slider-item-' + itemId, foreach: {data: wrapOptions, as: 'item'}, afterRender: initSlider">
+            <div class="mpgiftwrap-wrap-item">
+                <label class="label" data-bind="attr: {for: 'wrap-' + wrap_id + '-item-' + $parent.itemId}">
+                    <div class="media">
+                        <!-- ko if: item.image -->
+                        <img data-bind="attr:{src: item.image, alt: item.name}">
+                        <!-- /ko -->
+                    </div>
+                    <div class="option">
+                        <input type="radio" class="radio" data-bind="
+                               checked: $parent.wrap,
+                               valueUpdate: 'keyup',
+                               attr: {
+                                   value: wrap_id,
+                                   id: 'wrap-' + wrap_id + '-item-' + $parent.itemId,
+                                   name: 'mpgiftwrap-wrap-' + $parent.itemId
+                               }">
+                        <span class="mpgiftwrap-item-name" data-bind="text: item.name"></span>
+                        <br/>
+                        <span class="mpgiftwrap-item-description" data-bind="text: item.description"></span>
+                        <p class="note">
+                            <b data-bind="text: item.price"></b>
+                        </p>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <!-- ko if: isMessageEnabled -->
+        <input type="checkbox" class="radio"
+               data-bind="checked: useGiftMessage, valueUpdate: 'keyup', attr: {id: 'use-gift-message-' + itemId}">
+        <label class="label"
+               data-bind="i18n: 'Add Gift Note (' + giftMessageFee + ')',attr: {for: 'use-gift-message-' + itemId}"></label>
+        <div class="mpgiftwrap-message" data-bind="visible: useGiftMessage">
+            <div class="title">
+                <label for="mpgiftwrap-message-input">
+                    <span data-bind="i18n: 'Gift Note'"></span>
+                </label>
+            </div>
+            <div class="control">
+                <div class="input-box">
+                    <textarea name="mpgiftwrap-message" id="mpgiftwrap-message-input" rows="2"
+                              data-bind="value: message, valueUpdate: 'keyup', attr: {maxlength: maxChar}"></textarea>
+                    <p class="note">
+                        <span data-bind="text: maxChar + $t(' characters text limit') + '. ' + description"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </form>
+    <!-- /ko -->
+
+    <!-- ko if: postcardOptions().length -->
+    <form class="post-card-box" action="">
+        <strong data-bind="i18n: 'Postcard'"></strong>
+        <div class="mpgiftwrap-wrap"
+             data-bind="css: 'mpgiftwrap-postcard-slider-item-' + itemId, foreach: {data: postcardOptions, as: 'item'}, afterRender: initSlider">
+            <div class="mpgiftwrap-wrap-item">
+                <label class="label" data-bind="attr: {for: 'wrap-' + wrap_id + '-item-' + $parent.itemId}">
+                    <div class="media">
+                        <!-- ko if: item.image -->
+                        <img data-bind="attr:{src: item.image, alt: item.name}">
+                        <!-- /ko -->
+                    </div>
+                    <div class="option">
+                        <input type="radio" class="radio" data-bind="
+                               checked: $parent.postcard,
+                               valueUpdate: 'keyup',
+                               attr: {
+                                   value: wrap_id,
+                                   id: 'wrap-' + wrap_id + '-item-' + $parent.itemId,
+                                   name: 'mpgiftwrap-wrap-' + $parent.itemId
+                               }">
+                        <span class="mpgiftwrap-item-name" data-bind="text: item.name"></span>
+                        <br/>
+                        <span class="mpgiftwrap-item-description" data-bind="text: item.description"></span>
+                        <p class="note">
+                            <b data-bind="text: item.price"></b>
+                        </p>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="mpgiftwrap-message">
+            <div class="title">
+                <label for="mpgiftwrap-postcard-message-input">
+                    <span data-bind="i18n: 'Gift Message'"></span>
+                </label>
+            </div>
+            <div class="control">
+                <div class="input-box">
+                    <textarea name="mpgiftwrap-message" id="mpgiftwrap-postcard-message-input" rows="2"
+                              data-bind="value: postcardMessage, valueUpdate: 'keyup', attr: {maxlength: maxChar}"></textarea>
+                    <p class="note">
+                        <span data-bind="text: maxChar + $t(' characters text limit')"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- /ko -->
+    <div class="mpgiftwrap-model-button">
+        <button class="action primary btn-danger" type="button" data-bind="click: removeWrap, visible: isVisibleRemoveButton()">
+            <span data-bind="i18n: 'Remove'"></span>
+        </button>
+        <button class="action primary" type="button" data-bind="click: selectWrap">
+            <span data-bind="i18n: 'Save'"></span>
+        </button>
+        <button class="action" type="button" data-role="action" data-bind="click: closeModal">
+            <span data-bind="i18n: 'Cancel'"></span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+.mpgiftwrap-block {
+    margin-top: 5px;
+}
+
+.mpgiftwrap-icon {
+    max-height: 14px;
+}
+
+.mpgiftwrap-toggle {
+    cursor: pointer;
+}
+
+#mpgiftwrap-category-select, #mpgiftwrap-category-select-all-cart {
+    display: inline-block;
+    width: auto;
+}
+
+.mpgiftwrap-category {
+    margin: 5px 0 15px;
+}
+
+.mpgiftwrap-wrap-item {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.mpgiftwrap-item-name, .mpgiftwrap-item-description {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.mpgiftwrap-wrap-item .media {
+    max-width: 150px;
+}
+
+.mpgiftwrap-message .title {
+    margin: 10px 0 5px;
+}
+
+#block-mpgiftwrap-summary {
+    padding-bottom: 10px;
+}
+
+.owl-item {
+    touch-action: manipulation;
+    display: inline-block;
+}
+
+.owl-stage-outer {
+    overflow-x: hidden;
+}
+
+.owl-nav {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.mpgiftwrap-message .note {
+    font-style: italic;
+    font-size: 12px;
+}
+
+.mpgiftwrap-modal .owl-nav.disabled {
+    display: none;
+}
+
+.mpgiftwrap-model-button {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.mpgiftwrap-model-button .action.primary.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a
+}
+
+form.wrap-box strong, form.post-card-box strong {
+    font-size: 1.8rem;
+}

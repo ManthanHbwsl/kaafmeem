@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftWrap
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mpgiftwrap" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Gift Wrap</label>
+            <tab>mageplaza</tab>
+            <resource>Mageplaza_GiftWrap::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <b>Yes</b> to enable this module.]]></comment>
+                </field>
+                <field id="add_label" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Add Gift Wrap Button Label</label>
+                </field>
+                <field id="change_label" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Change Gift Wrap Button Label</label>
+                </field>
+                <field id="tax_class" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Tax Class</label>
+                    <source_model>Magento\Tax\Model\TaxClass\Source\Product</source_model>
+                </field>
+                <field id="gift_wrap_icon" translate="label comment" type="image" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gift Wrap Icon</label>
+                    <backend_model>Mageplaza\GiftWrap\Model\Config\Backend\Icon</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">mageplaza/giftwrap</upload_dir>
+                    <base_url type="media" scope_info="1">mageplaza/giftwrap</base_url>
+                    <comment><![CDATA[Find more icons <a href="https://www.flaticon.com/search?word=gift" target="_blank">here</a>]]></comment>
+                </field>
+                <field id="gift_wrap_type" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gift Wrap Type</label>
+                    <source_model>Mageplaza\GiftWrap\Model\Config\Source\Type</source_model>
+                    <comment><![CDATA[Per Item: Apply gift wrap for each item in the cart.<br/>Per Cart: Apply gift wrap for the whole cart.<br/>Both: Allow customers to add gift wrap for either each item or the whole cart.]]></comment>
+                </field>
+                <field id="customer_notice" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Notice to Customers</label>
+                    <depends>
+                        <field id="gift_wrap_type" negative="1">1</field>
+                    </depends>
+                </field>
+                <field id="show_on_product" translate="label comment" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gift Wrap on Product View Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <b>Yes</b> to Gift Wrap on Product View Page.]]></comment>
+                    <depends>
+                        <field id="gift_wrap_type" negative="1">2</field>
+                    </depends>
+                </field>
+                <field id="gift_message" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Note</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="description" translate="label" type="textarea" sortOrder="95" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Description</label>
+                </field>
+                <field id="max_characters" translate="label comment" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Max Characters</label>
+                    <comment>If zero or empty, default "120" characters will be used.</comment>
+                    <validate>validate-digits validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="gift_message">1</field>
+                    </depends>
+                </field>
+                <field id="gift_message_fee" translate="label comment" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gift Note Fee</label>
+                    <comment>The fee for greeting cards attached with the gifts.</comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="gift_message">1</field>
+                    </depends>
+                </field>
+                <field id="gift_message_visible" translate="label comment" type="multiselect" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Gift Note Under Items On</label>
+                    <source_model>Mageplaza\GiftWrap\Model\Config\Source\GiftMessageScope</source_model>
+                    <comment><![CDATA[Install <a href="https://www.mageplaza.com/magento-2-one-step-checkout-extension/?utm_source=mageplaza&utm_medium=mageplaza&utm_campaign=mageplaza-review&utm_content=One%20Step%20Checkout" target="_blank">Mageplaza One Step Checkout</a> to display gift messages on One Step Checkout Page.]]></comment>
+                    <depends>
+                        <field id="gift_message">1</field>
+                        <field id="gift_wrap_type" negative="1">2</field>
+                    </depends>
+                </field>
+                <field id="show_report" translate="label comment" type="select" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Show Report Gift Wrappers</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="sync_wrap_history" translate="label" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label></label>
+                    <button_label>Synchronize Wrap Histories</button_label>
+                    <button_url>mpgiftwrap/wrap_sync/history</button_url>
+                    <frontend_model>Mageplaza\GiftWrap\Block\Adminhtml\System\Config\SyncHistory</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

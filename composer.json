@@ -1,0 +1,219 @@
+{
+    "name": "magento/project-community-edition",
+    "description": "eCommerce Platform for Growth (Community Edition)",
+    "type": "project",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "magento/magento-composer-installer": true,
+            "magento/inventory-composer-installer": true,
+            "laminas/laminas-dependency-plugin": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "magento/composer-dependency-version-audit-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "require": {
+        "aheadworks/module-sbp": "^1.2",
+        "amasty/adminactionslog": "^2.0",
+        "amasty/advanced-review": "^1.15",
+        "amasty/advanced-reviews-page-builder": "^1.0",
+        "amasty/ajax-scroll": "^1.4",
+        "amasty/aminvisiblecaptcha": "^2.2",
+        "amasty/base": "^1.13",
+        "amasty/cron-schedule-list": "^1.0",
+        "amasty/custom-stock-status-msi": "^1.0",
+        "amasty/customers-also-viewed-graphql": "^2.0",
+        "amasty/feed": "^2.6",
+        "amasty/improved-sorting-graphql": "^1.1",
+        "amasty/label": "^2.2",
+        "amasty/module-banners-lite": "^1.0",
+        "amasty/module-cash-on-delivery": "^1.3",
+        "amasty/module-checkout-delivery-date": "^1.0.5",
+        "amasty/module-checkout-gift-wrap": "^1.0.3",
+        "amasty/module-checkout-layout-builder": "^1.0.3",
+        "amasty/module-checkout-style-switcher": "^1.1.5",
+        "amasty/module-checkout-thank-you-page": "^1.1.2",
+        "amasty/module-facebook-pixel-pro": "^1.0",
+        "amasty/module-gift-card-subscription-package-premium": "^2.11",
+        "amasty/module-mage-2.4.5-fix": "^1.0",
+        "amasty/module-one-step-checkout-core": "^1.2.12",
+        "amasty/module-one-step-checkout-pro-package": "^2.3.2",
+        "amasty/module-order-flags": "^1.0",
+        "amasty/module-pre-order-lite": "^2.0",
+        "amasty/module-product-status-suite-lite": "^2.3",
+        "amasty/module-reward-points-subscription-package-pro": "^2.0",
+        "amasty/module-rma-reports": "^1.0",
+        "amasty/module-single-step-checkout": "^4.3.1",
+        "amasty/module-special-promo": "2.11.1",
+        "amasty/mostviewed": "^2.9",
+        "amasty/rgrid": "1.0.9",
+        "amasty/rma": "^2.6",
+        "amasty/rma-lite": "^2.6",
+        "amasty/sorting": "^2.11",
+        "amasty/special-occasion-coupons": "^1.0",
+        "amasty/stockstatus-graphql": "^1.0",
+        "amasty/xnotif": "^1.14",
+        "apptrian/facebook-pixel": "^4.6",
+        "checkoutcom/magento2": "*",
+        "cweagans/composer-patches": "^1.7",
+        "emagicone/module-connector": "^2.3",
+        "facebook/php-business-sdk": "^15.0",
+        "justbetter/magento2-sentry": "^3.4",
+        "magento/composer-dependency-version-audit-plugin": "~0.1",
+        "magento/product-community-edition": "2.4.5-p1",
+        "magento/quality-patches": "^1.1",
+        "mageplaza/magento-2-arabic-language-pack": "dev-master",
+        "mageplaza/magento-2-seo-extension": "^4.0",
+        "mageplaza/module-backend-reindex": "^4.0",
+        "mageplaza/module-better-maintenance": "^4.0",
+        "mageplaza/module-core": "^1.4",
+        "mageplaza/module-cron-schedule": "^4.0",
+        "mageplaza/module-currency-formatter": "^4.0",
+        "mageplaza/module-payment-restriction": "^4.0",
+        "mageplaza/module-sitemap": "^4.0",
+        "mageplaza/module-smtp": "^4.0",
+        "magmodules/magento2-channable": "^1.6",
+        "mailchimp/mc-magento2": "103.4.57",
+        "mobiledetect/mobiledetectlib": "^3.0",
+        "mollie/mollie-api-php": "^2.40",
+        "mpdf/mpdf": "^8.0",
+        "mpdf/qrcode": "^1.2",
+        "plumrocket/module-sizechart": "^3.0",
+        "redboxsa/portable": "^1.0",
+        "redchamps/module-order-images": "^1.0",
+        "salla/zatca": "^2.0",
+        "shipperhq/module-shipping-tracker": "^1.0",
+        "tamara-solution/magento": "2.11.32",
+        "twilio/sdk": "^6.34",
+        "vnecoms/module-core": "^2.4",
+        "vnecoms/module-sms": "^2.4",
+        "vnecoms/module-sms-global": "^2.0",
+        "vnecoms/module-sms-msegat": "^2.0",
+        "webshopapps/module-matrixrate": "^20.2",
+        "what3words/module-what3words": "^3.0",
+        "xtento/customordernumber": "^2.3",
+        "xtento/pdfcustomizer": "^2.14"
+    },
+    "require-dev": {
+        "allure-framework/allure-phpunit": "~1.5.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "friendsofphp/php-cs-fixer": "~3.4.0",
+        "lusitanian/oauth": "~0.8.10",
+        "magento/magento2-functional-testing-framework": "^3.7",
+        "pdepend/pdepend": "~2.10.0",
+        "phpmd/phpmd": "^2.12.0",
+        "phpstan/phpstan": "^1.6.8",
+        "phpunit/phpunit": "~9.5.20",
+        "sebastian/phpcpd": "^6.0.3",
+        "squizlabs/php_codesniffer": "~3.6.0",
+        "symfony/finder": "^5.2"
+    },
+    "conflict": {
+        "gene/bluefoot": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Magento\\Framework\\": "lib/internal/Magento/Framework/",
+            "Magento\\Setup\\": "setup/src/Magento/Setup/",
+            "Magento\\": "app/code/Magento/"
+        },
+        "psr-0": {
+            "": [
+                "app/code/",
+                "generated/code/"
+            ]
+        },
+        "files": [
+            "app/etc/NonComposerComponentRegistration.php"
+        ],
+        "exclude-from-classmap": [
+            "**/dev/**",
+            "**/update/**",
+            "**/Test/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
+            "Magento\\Tools\\": "dev/tools/Magento/Tools/",
+            "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/",
+            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/"
+        }
+    },
+    "version": "2.3.5",
+    "minimum-stability": "stable",
+    "repositories": {
+        "mirasvit-bms2": {
+            "type": "composer",
+            "url": "https://58279:Y7FH5GB8UM@packages.mirasvit.com/58279:Y7FH5GB8UM/"
+        },
+        "vnecoms-repo": {
+            "type": "composer",
+            "url": "https://repo.vnecoms.com"
+        },
+        "redchamps": {
+            "type": "composer",
+            "url": "https://RkIXo16HMUDYAKLXxu4WASILzmPS:OMRKsT5QD9uNJ1Y2T5nHqPtzmeu@repo.redchamps.com/repositories/mayyar@kaafmeem.com-cMaEP2xkth1NzY0A8l6ao1sAdH4vGWHp"
+        },
+        "0": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        },
+        "amasty": {
+            "type": "composer",
+            "url": "https://composer.amasty.com/community"
+        },
+        "plumrocket": {
+            "type": "composer",
+            "url": "https://store.plumrocket.com/repo/"
+        },
+        "xtento": {
+            "type": "composer",
+            "url": "https://repo.xtento.com"
+        },
+        "mageplaza": {
+            "type": "composer",
+            "url": "https://repo.mageplaza.com"
+        },
+        "aheadworks": {
+            "type": "composer",
+            "url": "https://dist.aheadworks.com/"
+        }
+    },
+    "extra": {
+        "magento-force": "override",
+        "composer-exit-on-patch-failure": true,
+        "patches": {
+            "aheadworks/module-sbp": {
+                "Fixed editing cart item": "patches/composer/aheadworks-module-sbp-fixed-editing-cart-item.patch"
+            },
+            "amasty/module-special-promo": {
+                "Fixed discount calculation if price selector is not empty": "patches/composer/amasty-module-special-promo-fix-calc-discount.patch"
+            },
+            "mageplaza/module-reward-points": {
+                "PHP 8.1 compatibility fix": "patches/composer/mageplaza-module-reward-points-fix-compatibility-w-m245p1.patch"
+            },
+            "paypal/module-braintree-core": {
+                "Backend configuration fix": "patches/composer/paypal-module-braintree-core-fix-backend-config.patch"
+            },
+            "redboxsa/portable": {
+                "PHP 8.1 compatibility fix": "patches/composer/redboxsa-portable-fix-compatibility-w-m245p1.patch"
+            },
+            "magento/module-quote": {
+                "Customer group is NULL in guest orders": "patches/composer/magento-module-quote-customer-group-is-null-in-guest-orders.patch",
+                "Invalid customer address ID at checkout": "patches/composer/magento-module-quote-invalid-customer-address-id-at-checkout.patch"
+            },
+            "magento/module-swatches": {
+                "Product with Salable Qty of 0 shows In Stock on product page": "patches/composer/magento-module-swatches-product-with-salable-qty-of-0-shows-in-stock-on-product-page.patch"
+            }
+        }
+    }
+}

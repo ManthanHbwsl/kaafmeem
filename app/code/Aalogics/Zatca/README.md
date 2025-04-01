@@ -1,0 +1,1 @@
+Module Aalogics\Zatca implements integration zatca QR with Magento. 

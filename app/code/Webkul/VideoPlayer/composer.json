@@ -1,0 +1,19 @@
+{
+    "name": "webkul/module-videoplayer",
+    "description": "Webkul Magento2 Product Video Player",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "version": "5.0.1",
+    "require": {
+        "magento/module-product-video": "100.4.*",
+		"magento/module-backend": "102.0.*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Webkul\\VideoPlayer\\": ""
+        }
+    }
+}

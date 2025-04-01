@@ -1,0 +1,39 @@
+<?php $_product = $this->getProduct() ?>
+<?php $blockData = $this->getBlockData() ?>
+<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+<?php if($_product->getSpecialPrice() && $_product->getSpecialToDate() && $_product->getSpecialFromDate()): ?>
+	<?php $themeHelper = $this->helper('MGS\ThemeSettings\Helper\Config'); ?>
+	<?php $dateTimeFormat = \Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT; ?>
+	<?php $specialFromDate = date($dateTimeFormat, strtotime($_product->getSpecialFromDate())); ?>
+	<?php $now = $themeHelper->getCurrentDateTime(); ?>
+	<?php $endTime = date($dateTimeFormat, strtotime($_product->getSpecialToDate())); ?>
+	
+	<?php if($specialFromDate <= $now && $endTime > $now): ?>
+		<div class="deal-timer">
+			<div id="deal-timer-<?php /* @escapeNotVerified */ echo $_product->getId(); ?>" class="countdown"></div>
+			<?php if(($blockData['fbuilder_days']!='') && ($blockData['fbuilder_hours']!='') && ($blockData['fbuilder_minutes']!='') && ($blockData['fbuilder_seconds']!='')): ?>
+				<div class="time-note">
+					<span class="days"><?php /* @escapeNotVerified */ echo $builderHelper->decodeHtmlTag($blockData['fbuilder_days']) ?></span>
+					<span class="hours"><?php /* @escapeNotVerified */ echo $builderHelper->decodeHtmlTag($blockData['fbuilder_hours']) ?></span>
+					<span class="mins"><?php /* @escapeNotVerified */ echo $builderHelper->decodeHtmlTag($blockData['fbuilder_minutes']) ?></span>
+					<span class='secs'><?php /* @escapeNotVerified */ echo $builderHelper->decodeHtmlTag($blockData['fbuilder_seconds']) ?></span>
+				</div>
+			<?php endif ?>
+		</div>
+		<script type="text/javascript">
+			var dthen<?php /* @escapeNotVerified */ echo $_product->getId(); ?> = new Date("<?php echo Date("m/d/y", strtotime($endTime)).' 11:59:59 PM'; ?>");
+			start<?php /* @escapeNotVerified */ echo $_product->getId(); ?> = "<?php /* @escapeNotVerified */ echo $now; ?>";
+			start_date<?php /* @escapeNotVerified */ echo $_product->getId(); ?> = Date.parse(start<?php /* @escapeNotVerified */ echo $_product->getId(); ?>);
+			var dnow<?php /* @escapeNotVerified */ echo $_product->getId(); ?> = new Date(start_date<?php /* @escapeNotVerified */ echo $_product->getId(); ?>);
+			ddiff = new Date((dthen<?php /* @escapeNotVerified */ echo $_product->getId(); ?>)-(dnow<?php /* @escapeNotVerified */ echo $_product->getId(); ?>));
+			gsecs<?php /* @escapeNotVerified */ echo $_product->getId(); ?> = Math.floor(ddiff.valueOf()/1000);
+
+			var iid<?php /* @escapeNotVerified */ echo $_product->getId(); ?> = "deal-timer-<?php /* @escapeNotVerified */ echo $_product->getId(); ?>";
+			CountBack(gsecs<?php /* @escapeNotVerified */ echo $_product->getId(); ?>,"deal-timer-<?php /* @escapeNotVerified */ echo $_product->getId(); ?>", <?php /* @escapeNotVerified */ echo $_product->getId(); ?>);
+		</script>
+	<?php else:?>
+		<div class="note out-time">
+			<span><?= __('The product out of time deal special')?></span>
+		</div>
+	<?php endif ?>
+<?php endif ?>

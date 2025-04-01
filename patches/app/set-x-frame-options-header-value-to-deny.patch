@@ -1,0 +1,11 @@
+--- a/app/etc/env1.php
++++ b/app/etc/env.php
+@@ -29,7 +29,7 @@
+             'connection' => 'default'
+         ]
+     ],
+-    'x-frame-options' => 'SAMEORIGIN',
++    'x-frame-options' => 'DENY',
+     'MAGE_MODE' => 'production',
+     'session' => [
+         'save' => 'files'

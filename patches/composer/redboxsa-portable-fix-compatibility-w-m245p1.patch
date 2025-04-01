@@ -1,0 +1,11 @@
+--- a/vendor/redboxsa/portable/Model/Carrier/Redbox.php
++++ b/vendor/redboxsa/portable/Model/Carrier/Redbox.php
+@@ -100,7 +100,7 @@
+             $cities = array_map('strtolower', explode(", ", $this->getConfigData('city')));
+         }
+
+-        $destCity = strtolower($request->getDestCity());
++        $destCity = strtolower((string)$request->getDestCity());
+
+         if ($this->getConfigData('sallowspecific') && count($cities) && $destCity && in_array($destCity, $cities) === false) {
+             return false;

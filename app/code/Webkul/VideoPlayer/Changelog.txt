@@ -1,0 +1,19 @@
+Legend
+
++ Features
+- Bugs
+
+-------------------------------- Version 5.0.1 --------------------------------------
+    + Compatible with Magento 2.4.x.
+    - Minor bugs fixed.
+
+-------------------------------- Version 5.0.0 --------------------------------------
+    + Compatible with Magento 2.4.x.
+
+-------------------------------- Version 3.0.0 --------------------------------------
+
+    + Compatible with magento 2.3.x version.
+    + Admin can enable disable module
+    + Admin can upload mp4 and webm videos on product page
+    + Admin can configure settings for the video player
+    + Admin can select whether to upload video via url or normal upload

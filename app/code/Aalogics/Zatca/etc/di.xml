@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+     <!-- <type name="Mageplaza\PdfInvoice\Helper\PrintProcess">
+      <plugin name="aalogics_zatca_add_qr" type="Aalogics\Zatca\Plugin\Mageplaza\PdfInvoice\Helper\PrintProcess" sortOrder="1" disabled="false" />
+    </type>
+     <type name="Mageplaza\PdfInvoice\Model\Template\Processor">
+      <plugin name="aalogics_zatca_add_qr" type="Aalogics\Zatca\Plugin\Mageplaza\PdfInvoice\Model\Template\Processor" sortOrder="1" disabled="false" />
+    </type> 
+     <preference for="Mageplaza\PdfInvoice\Helper\PrintProcess" type="Aalogics\Zatca\Plugin\Mageplaza\PdfInvoice\Helper\PrintProcess"/>
+     -->
+     
+     <type name="Magento\Sales\Model\Order\Pdf\Invoice">
+      <plugin name="aalogics_zatca_default_invoice_qr" type="Aalogics\Zatca\Plugin\Order\Pdf\ZatcaInvoice" sortOrder="1" disabled="false" />
+    </type>
+</config>

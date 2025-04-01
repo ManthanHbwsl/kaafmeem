@@ -1,0 +1,21 @@
+{
+  "name": "kaafmeem/module-image-optimizer-fix",
+  "version": "1.0.0",
+  "description": "N/A",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "amasty/module-image-optimizer": "1.1.*"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Kaafmeem\\ImageOptimizerFix\\": ""
+    }
+  }
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- /** * @author Amasty Team * @copyright Copyright (c) 2015 Amasty (http://www.amasty.com) 
+	* @package Amasty_HelloWorld */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+	<system>
+		<tab id="aalogics" translate="label" sortOrder="10">
+			<label>Aalogics</label>
+		</tab>
+		
+		<section id="zatca" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Zatca</label>
+			<tab>aalogics</tab>
+			<resource>Aalogics_Zatca::config_zatca</resource>
+			<group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+
+				<label>General</label>
+				<field id="enable" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>				
+				<field id="seller" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Seller Name</label>
+					<comment><![CDATA[Seller Name registered in zatca]]></comment>
+				</field>
+				<field id="tax_number" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Tax Number</label>
+					<comment><![CDATA[Tax number registered in zatca]]></comment>
+				</field>
+				
+				<field id="qr_scale" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>QR Scale</label>
+					<comment><![CDATA[Scale QR image size , default scale is 1]]></comment>
+				</field>
+				
+				<field id="details" translate="label" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Details</label>
+					<comment><![CDATA[Detail Instruction / Comment with QR]]></comment>
+				</field>
+				
+				<field id="position" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Position</label>
+					<source_model>Aalogics\Zatca\Model\Adminhtml\System\Config\Source\Position</source_model>
+					<comment><![CDATA[zatca QR position in invoice]]></comment>
+				</field>
+
+
+			</group>
+		</section>
+		
+
+	</system>
+</config>

@@ -1,0 +1,17 @@
+<?php /** @var  $block \Magento\Sales\Block\Order\PrintOrder\Invoice */?>
+<?php
+$invoice = $block->getInvoice();
+$helper = $this->helper(Aalogics\Zatca\Helper\Data::class);
+$qrDescription = $helper->getZatcaQrDescription();
+$qrCode = $helper->getZatcaQr($invoice,true);
+?>
+<div style="width:100%; display:block; text-align:center;"><h4>Tax Invoice</h4></div>
+<div classs="table">
+	<div class="mp-row mp-heading">
+		<div>
+			<span style="text-align:left;"><?php echo $block->escapeHtml($qrDescription)?></span>
+			<span><img src="<?php echo $block->escapeUrl($qrCode)?>" /></span>
+		</div>
+	</div>
+</div>
+

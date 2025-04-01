@@ -1,0 +1,52 @@
+{
+    "mst_banner_banner": {
+        "column": {
+            "banner_id": true,
+            "name": true,
+            "is_active": true,
+            "active_from": true,
+            "active_to": true,
+            "placeholder_ids": true,
+            "sort_order": true,
+            "content": true,
+            "url": true,
+            "conditions_serialized": true,
+            "customer_group_ids": true,
+            "store_ids": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "mst_banner_placeholder": {
+        "column": {
+            "placeholder_id": true,
+            "name": true,
+            "renderer": true,
+            "is_active": true,
+            "layout_update_id": true,
+            "layout_position": true,
+            "conditions_serialized": true,
+            "css": true,
+            "identifier": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "mst_banner_analytics": {
+        "column": {
+            "analytics_id": true,
+            "banner_id": true,
+            "action": true,
+            "value": true,
+            "referrer": true,
+            "remote_addr": true,
+            "session_id": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

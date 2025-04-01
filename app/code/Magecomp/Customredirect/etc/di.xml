@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">    
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="pluginAddProductToCart" type="Magecomp\Customredirect\Plugin\Cartplugin" sortOrder="10" disabled="false"/>
+    </type>
+	<type name="Magento\Customer\Controller\Account\LoginPost">
+        <plugin name="pluginCustomerLoginPost" type="Magecomp\Customredirect\Plugin\Afterloginplugin" sortOrder="11" disabled="false"/>
+    </type>
+	<type name="Magento\Customer\Controller\Account\Logout">
+        <plugin name="pluginCustomerLogout" type="Magecomp\Customredirect\Plugin\Aroundlogoutplugin" sortOrder="12" disabled="false"/>
+    </type>
+	<type name="Magento\Customer\Controller\Account\CreatePost">
+        <plugin name="pluginCustomerCreatePost" type="Magecomp\Customredirect\Plugin\Afterregplugin" sortOrder="11" disabled="false"/>
+    </type>
+</config>

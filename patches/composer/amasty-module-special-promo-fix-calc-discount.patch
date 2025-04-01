@@ -1,0 +1,14 @@
+--- a/vendor/amasty/module-special-promo/Model/Rule/Action/Discount/AbstractRule.php
++++ b/vendor/amasty/module-special-promo/Model/Rule/Action/Discount/AbstractRule.php
+@@ -476,7 +476,10 @@
+     public function beforeCalculate(Rule $rule)
+     {
+         $specialPromotionRule = $this->ruleResolver->getSpecialPromotions($rule);
+-        $this->itemPrice->setPriceSelector($specialPromotionRule->getPriceselector());
++
++		if ($specialPromotionRule->getPriceselector() && $specialPromotionRule->getPriceselector() != '' && $specialPromotionRule->getPriceselector() != null) {
++			$this->itemPrice->setPriceSelector($specialPromotionRule->getPriceselector());
++		}
+
+         return true;
+     }

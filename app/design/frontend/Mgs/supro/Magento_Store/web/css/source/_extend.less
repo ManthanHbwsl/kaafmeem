@@ -1,0 +1,41 @@
+& when (@media-common = true) {
+    .switcher {
+        &.language {
+            .switcher-label {
+                display: none;
+            }
+            .action {
+                &.toggle {
+                    cursor: pointer;
+                    &:after {
+                        display: inline-block;
+                    }
+                    strong {
+                        font-weight: 400;
+                    }
+                }
+            }
+            ul {
+                &.dropdown {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none none;
+                    background: #fff;
+                    border: 1px solid #bbb;
+                    margin-top: 4px;
+                    min-width: 160px;
+                    z-index: 100;
+                    box-sizing: border-box;
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+                    a {
+                        display: block;
+                        padding: 8px;
+                    }
+                }
+            }
+        }
+    }
+}

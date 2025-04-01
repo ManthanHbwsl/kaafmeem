@@ -1,0 +1,83 @@
+<div class="track-order-main">
+    <span class="error_msg" id="emsg" style="display: none;"></span>
+    <span id="track_message" style="display: none;"></span>
+<div class="track-container"><div class="block block-customer-track">
+    <div class="block-content" aria-labelledby="block-customer-track-heading">
+        <form class="form form-track" id="track-form" action="javascript:" 
+                 data-mage-init='{"validation":{}}'>  
+        <?= $block->getBlockHtml('formkey') ?>        
+            <fieldset class="fieldset track" data-hasrequired="* Required Fields">          
+                
+                <div class="field track required">
+                    <label class="label" for="tracking id"><span><?= $block->escapeHtml(__('order Id')) ?></span></label>
+                    <div class="control">
+                        <input name="track[order_id]" value="" autocomplete="off" id="tracking" type="text" class="input-text" title="<?php echo __('Order Id') ?>" data-validate='{"required":true}'>
+                    </div>
+                </div>
+                <div class="field email required">
+                    <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                    <div class="control">
+                        <input name="track[customer_email]" value="" autocomplete="off" id="email" type="email" class="input-text" title="<?php echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+                    <div class="actions-toolbar">
+                    <div class="primary"><button type="submit" id="tarck_button" class="action track primary" name="send" id="send2"><span><?= $block->escapeHtml(__('Track Order')) ?></span></button></div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+</div>
+<div class="track_result" style="display: none;">
+    <h2><?php echo __('Tracking Information') ?></h2>
+    <div class="order-detail-id">
+    </div>
+    <table id="shipmentservice"> 
+        <thead><td><b><?php echo __('Carrier Title'); ?></b></td><td><b><?php echo __('Tracking Number'); ?></b></td></thead>
+        <tbody></tbody>
+    </table>
+</div>
+</div>
+<script>
+    require([
+        'jquery','mage/validation'
+    ], function ($) {
+      var dataForm = $('#track-form');
+      dataForm.mage('validation', {});
+      $('#tarck_button').click( function() { 
+        var status = dataForm.validation('isValid'); //validates form and returns boolean
+        if(status){
+            $.ajax({
+                url:'<?php echo $this->getBaseUrl() ?>trackorder/order/shipment',
+                type:'POST',
+                showLoader: true,
+                dataType:'json',
+                data: $('form').serialize(),  
+            }).done(function( response ){ 
+                dataobj = JSON.parse(JSON.stringify(response));
+                if(dataobj.status == true){
+                    $(".track_result, #track_message").css('display','block');
+                    $(".error_msg").css('display','none');
+                    $(".order-detail-id").html(dataobj.orderdetailhtml);
+                    $("#track_message").html(dataobj.emessage);
+                if(dataobj.trackData){    
+                   $("#shipmentservice").css('display','block')
+                   $("#shipmentservice tbody").html(dataobj.trackData); 
+                   $("#track_message").html(dataobj.emessage);
+                }
+                else{
+                   $("#shipmentservice, #track_message").css('display','none'); 
+                   $(".error_msg").css('display','block');
+                   $("#emsg").html(dataobj.emessage); 
+                }   
+            }
+            else{
+                $(".track_result, #track_message").css('display','none');
+                $(".error_msg").css('display','block');
+                $("#emsg").html(dataobj.emessage);           
+            }
+              });
+            }
+        });
+    });
+</script>
