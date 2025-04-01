@@ -29,7 +29,7 @@
             <?php if ($_item->getParentItem()) {
     continue;
 } ?>
-            <tbody>
+            <tbody style="font-family: 'saudi_riyal';">
                 <?= $block->getItemHtml($_item) ?>
                 <?php if ($this->helper('Magento\GiftMessage\Helper\Message')->isMessagesAllowed('order_item', $_item) && $_item->getGiftMessageId()): ?>
                     <?php $_giftMessage = $this->helper('Magento\GiftMessage\Helper\Message')->getGiftMessageForEntity($_item); ?>
@@ -62,7 +62,7 @@
                 <?php endif ?>
             </tbody>
         <?php endforeach; ?>
-        <tfoot>
+        <tfoot style="font-family: 'saudi_riyal';">
             <?= $block->getChildHtml('order_totals') ?>
         </tfoot>
     </table>
